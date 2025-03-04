@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="../css/basic-pg-console.log.css" rel="stylesheet">
+
+    <title>Lab 04.01 PROG</title>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Lab 04.01 PROG</h1>
+        <h2>Arrays</h2>
+
+    </div>
+    
+    <script>
+
+        // 04.01 Lab
+
+        // 1. Declare an array called gems, and assign it three gems of your choosing.
+        const gems = ['diamond', 'pearl', 'ruby'];
+        // 2. Log the entire array and also the first item.
+        console.log(gems);
+        console.log(gems[1]);
+        console.log(gems[0]);
+        // console.log(gems);
+        // console.log(gems[0]);
+
+        // 3. Add 'sapphire' to the end of the array, using the index 
+        // of the new item. If sapphire is already in the array, add another gem.
+        gems[3] = 'sapphire';
+        console.log(gems);
+        // gems[gems.length] = 'sapphire';
+        // console.log(gems);
+        // 4. Using an array method, add 'amethyst' to the end of the array  If amethyst is already in the array, add some other gem.
+        gems.push('amethyst');
+        console.log(gems);
+
+        // 5. Use an array method to put the gems in alphabetcial order
+        gems.sort();
+        console.log(gems);
+     
+        // 6. Log the number of items of the array. The result should be 5.
+        
+        console.log(gems.length); // 5
+
+        // 7. Save the next to last gem to a variable, without deleting it:
+        let nextToLastGem = gems[gems.length-2];
+        console.log('nextToLastGem:', nextToLastGem);
+
+        // 8. Use one array method to remove the last gem from the array, and then another array method to put the item right back at the end
+        let popped = gems.pop(gems.length-1);
+        console.log(popped);
+        gems.push(popped);
+        console.log(gems);
+
+        /*
+        9. Make a nested array called months, containing:
+        'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct','Nov', 'Dec'.
+        with 4 child arrays of 3 months each. */
+        const months = [ ['Jan', 'Feb', 'Mar'],
+                         ['Apr', 'May', 'Jun'], 
+                         ['Jul', 'Aug', 'Sep'], 
+                         ['Oct','Nov', 'Dec'] ];
+
+        // 9.1 Log all months that start with 'J' or 'M'.
+        // iterate over the nested array
+        console.log('months starts with J;', months[0][0], months[1][2], months[2][0]);
+        console.log('months starts with M;', months[0][2], months[1][1]);
+        // 9.2 another way without a nested loop is to first flatten the array
+        // const flatMonths = months.flat();
+        const flatMonths = months.flat();
+        console.log('nested months:', months);
+        console.log('flatMonths:', flatMonths);
+        console.log('months starts with J;', flatMonths[0], flatMonths[5], flatMonths[6]);
+        console.log('months starts with M;', flatMonths[2], flatMonths[4]);
+
+        console.log(flatMonths[0].startsWith('J'));
+        console.log(flatMonths[0].startsWith('j'));
+        console.log(flatMonths[0].endsWith('j'));
+        console.log(flatMonths[0].endsWith('n'));
+        // 10. Given this list of numbers:
+        // [111, 23, 202, 12, 23, 1000, 2006, 1, 2, 14, 28. 
+        /* Put them into an array called nums and then sort the array in descending order.
+        HINT: You need to use an array method that takes a callback function.
+        */
+        const nums = [111, 23, 202, 12, 23, 1000, 2006, 1, 2, 14, 28];
+        nums.sort(function(a,b) {
+            return a-b;
+        });
+        console.log(nums);
+        
+
+        const fruits = ['apple', 'apricot', 'banana', 'blueberry', 'grape', 'kiwi',  'lemon', 'lime', 'mango', 'orange', 'papaya', 'pear', 'pineapple'];
+
+        // think of strings as like little arrays of letters
+        // like arrays, strings have index w [] 
+        // like arrays, strings have a length property
+        let pet = 'cat';
+        console.log(pet[0]); // c
+        console.log(pet.length); // 3
+
+        // bonus: just log the fruits thay starts with a vowel or end with a vowel or both: HINT: vowels = 'aeiou' and arr.includes(item) returns boolean
+        for(fru of fruits) {
+            const VOWELS = 'aeiouy';
+            // check if fruit starts with AND ends with vowel
+            if(VOWELS.includes(fru[0]) && VOWELS.includes(fru[fru.length-1])) {
+                console.log(`${fru} starts and ends with a vowel`);
+            } else if(VOWELS.includes(fru[0])) {
+                console.log(`${fru} starts with a vowel`);
+            } else if(VOWELS.includes(fru[fru.length-1])) {
+                console.log(`${fru} ends with a vowel`);
+            } else {
+                console.log(`${fru} does not start or end with a vowel`);
+            }
+        }
+
+        /*
+        11. BONUS I:
+        Write a function that takes TWO arguments: an array of strings, and a new string to add to the end of the array. The function adds the string to the array, sorts the array from A-Z, and returns the new array. 
+        */
+        
+        function addItemAndSortArr(arr, str) {
+            if(arr.includes(str)){
+                console.log('Ooops this item is exist!');
+            }else {
+                arr.push(str);
+                arr.sort();
+            } 
+            return arr
+        }
+        const gems1 = ['diamond', 'pearl', 'ruby'];
+        let sortedGems = addItemAndSortArr(gems1, 'opal');
+        console.log(sortedGems);
+        let sortedNums = addItemAndSortArr(nums, 10);
+        console.log(sortedNums);
+        nums.sort((a, b) => a - b); // Custom comparison function to sort numbers
+        console.log(nums)
+
+        // const gemsPlusArr = addItemAndSortArr(gems, 'topaz');
+        // console.log('gemsPlusArr:', gemsPlusArr);
+        
+        /* If the input is NOT a string the function returns: 'INVAID INPUT: function expects a string argument' "INVALID INPUT: function expects a string argument";
+    
+
+        // "Rambles", "Pon Pon", "Blue"
+        console.log();
+        console.log();
+
+        /*
+        11. BONUS II:
+        Write a function that takes TWO arguments: an array of 4-letter strings, and a new string to possibly add to the end of the array. If the string argument is 4 letters, the function adds the string to the array, and returns the new array, unsorted. Else, if the str arg is NOT 4 letters, it returns the inputted array unchanged.
+        */
+        // assume all strings but do NOT assume string length:
+        function add4CharStrToArr(arr,str) {
+            if(str.length != 4) {
+                return `Oops! the ${str} contains more or less then 4 LETTERS`;
+            }
+            arr.push(str);
+            return arr;
+        }
+        
+        // const pets1 = ["Fido", "Buni", "Klondike"]; // reject
+        const pets2 = ["Fido", "Buni", "Claw"]; // good
+
+        let newPet1 = 'Dino'; // good
+        let newPet2 = 'Rover'; // reject
+        // console.log(add4CharStrToArr(pets1, newPet1)); // reject
+        console.log(add4CharStrToArr(pets2, newPet1)); // good
+        console.log(add4CharStrToArr(pets2, newPet2)); // reject
+
+        // const froots1 = ["plum", "kiwi", "pineapple"]; // reject
+        const froots2 = ["plum", "kiwi", "lime"]; // good
+
+        let newFru1 = 'pear'; // good
+        let newFru2 = 'banana'; // reject
+        // console.log(add4CharStrToArr(froots1, newFru1)); // reject
+        console.log(add4CharStrToArr(froots2, newFru1)); // good
+        console.log(add4CharStrToArr(froots2, newFru2)); // reject
+
+        // const cars1 = ["Audi", "Ford", "Mercedes"]; // reject
+        const cars2 = ["Audi", "Ford", "Fiat"]; // good
+
+        let newCar1 = 'Opel'; // good
+        let newCar2 = 'Dodge'; // reject
+        // console.log(add4CharStrToArr(cars1, newCar1)); // reject
+        console.log(add4CharStrToArr(cars2, newCar1)); // good
+        console.log(add4CharStrToArr(cars2, newCar2)); // reject
+
+    </script>
+    
+</body>
+
+</html>

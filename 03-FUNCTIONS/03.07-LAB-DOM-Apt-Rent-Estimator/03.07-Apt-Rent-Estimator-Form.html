@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="css/apt-rent-estimator.css">
+
+    <title>03.07 - Apt Rent Estimator</title>
+
+</head>
+
+<body>
+
+    <div>
+
+        <h1>Apartment Rent Estimator
+        </h1>
+
+        <form>
+
+            <select name='bdrms' id='bdrms'>
+                <option value="1000">Studio ($1,000)</option>
+                <option value="1400" selected>1 Bedroom ($1,400)</option>
+                <option value="1800">2 Bedrooms ($1,800)</option>
+                <option value="2300">3 Bedrooms ($2,300)</option>
+            </select>
+            
+            <select name='baths' id='baths'>
+                <option value="0">1 Bath</option>
+                <option value="450">1 1/2 Baths (+$450)</option>
+                <option value="850">2 Baths (+$850)</option>
+                <option value="1250">2 1/2 Baths (+$1,250)</option>
+             </select>
+
+             <select name='closets' id='closets'>
+                <option value="0">2 Closets</option>
+                <option value="150">3 Closets (+$150)</option>
+                <option value="300">4 Closets (+$300)</option>
+                <option value="450">5 Closets (+$450)</option>
+             </select>
+
+             <h4>Monthly charges apply for amenities;<br>
+             % fees are on top of bedrooms + baths:</h4>
+
+            <input type='checkbox' id='doorman' value='0.1' checked>
+            <label for='doorman'>Doorman Building (+10%)</label><br>
+
+            <input type='checkbox' id='parking' value='350'>
+            <label for='parking'>Indoor Parking (+$350)</label><br>
+
+            <input type="checkbox" id="view" value='.25'>
+            <label for="view">Skyline View (+25%)</label><br>
+
+            <input type='checkbox' id='gym' value='100'>
+            <label for='gym'>Fitness Center (+$100)</label><br>
+
+            <input type='checkbox' id='balcony' value='0.05'>
+            <label for='balcony'>Balcony (+5%)</label><br>
+
+            <input type='checkbox' id='pet' value='50'>
+            <label for='pet'>Pet Friendly (+$50)</label>
+            
+            <button>calculate rent</button>
+
+            <h3 id="feedback"></h3>
+
+        </form>
+
+    </div>
+
+    <!-- START .js -->
+    <script src="js/03.07-Apt-Rent-Estimator-Form-START.js"></script>
+
+    <!-- FINAL .js -->
+    <!-- <script src="js/03.07-Apt-Rent-Estimator-Form-FINAL.js"></script> -->
+
+</body>
+
+</html>

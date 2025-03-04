@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Lab 04.03 - FINAL</title>
+
+    <link rel="stylesheet" href="../css/basic-pg-console.log.css">
+    
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Lesson 04.03 Lab - FINAL</h1>   
+        <h2>Array Methods</h2>
+        <h3>unshift(), shift(), splice(), slice(), join(),<br> 
+            includes(), indexOf(), join(), flat(), concat(),<br>
+            toUpperCase(), toLowerCase(), replace(), replaceAll()
+        </h3>
+
+        <h3>______________________</h3>
+
+        <h3>see console for output</h3>
+        <h3>switch script to FINAL for solution output</h3>
+
+    </div>
+
+    <script>
+
+      // 1. Make a pets array, containing 'cat', 'dog' and 'bunny'.
+      const petsArr = ['cat', 'dog', 'bunny'];
+      
+      console.log('pets array:', petsArr); // ['cat', 'dog', 'bunny']
+
+      // 2. Use an array method to add 'iguana' and 'parrot' to the end 
+      //    of the array.
+      petsArr.push('iguana','parrot');
+      
+      console.log('pets array with new pets added:', petsArr);
+      // ['cat', 'dog', 'bunny', 'iguana', 'parrot']
+
+      // 3. Use an array method to insert 'hamster' between 'dog' and 'bunny'.
+      // 'iguana'
+      petsArr.splice(2,0,'hamster');
+      console.log("pets array with 'hamster' added:", petsArr);
+      // ['cat', 'dog', 'hamster', 'bunny', 'iguana', 'parrot']
+
+      // 4. Use an array method to make 'snake' the first pet:
+      // 'snake'
+
+      petsArr.unshift('snake');
+      console.log("pets array with 'snake' added at the begining:", petsArr);
+
+      // ['snake', 'cat', 'dog', 'hamster', 'bunny', 'iguana', 'parrot']
+
+      // 5. Use an array method to put the pets in alphabetical order (A-Z):
+      
+      petsArr.sort();
+      console.log("pets array in alphabetical order:", petsArr);
+      // ['bunny', 'cat', 'dog', 'hamster', 'iguana', 'parrot', 'snake']
+
+      // 6. Use array methods to move the next to last pet to the 
+      //    beginning of pets. The next to last pet happens to be 'parrot'. 
+      //    Don't remove any pets or write any pet names:
+      let lastI = petsArr.splice(-2, 1)[0];
+      let nextT = petsArr.unshift(lastI);
+
+      
+      console.log('parrot moved to first place:', petsArr);
+      // ['parrot', 'bunny', 'cat', 'dog', 'hamster', 'iguana', 'snake']
+
+      // 7. The dog and cat don't like being next to each other, 
+      // but they both like the bunny, so put the bunny between them. 
+      // Don't remove any pets or write any pet names:
+      let secondPet = petsArr.splice(1,1)[0];
+      petsArr.splice(2,0, secondPet);
+
+      console.log('"bunny" moved between cat,dog:', petsArr);
+
+      // ['parrot', 'cat', 'bunny', 'dog', 'hamster', 'iguana', 'snake']
+
+      // 8. Given pets2, combine both arrays into a new array called petShopArr, 
+      //    and then alphabetize petShopArr:
+      const pets2 = ['canary', 'turtle', 'gerbil', 'tarantula', 'goldfish'];
+      const petShopArr = petsArr.concat(pets2);
+      petShopArr.sort();
+
+      console.log('petShopArr:', petShopArr);
+      // petShop: ['bunny', 'parrot', 'canary', 'cat', 'dog', 'gerbil', 'goldfish', 'hamster', 'iguana', 'snake', 'tarantula', 'turtle']
+
+      // 9. Make a string called petsShopStr, consisting of all 
+      //    the pets in petShopArr, with the pets separated by ' & ':
+      // ' & '
+      let petsShopStr = petShopArr.join(' & ');
+      console.log('petsShopStr:', petsShopStr);
+      // canary & cat & dog & gerbil .. etc.
+
+      // 10. Use two array methods to get the index of the dog (4). 
+      //     HINT: You need to make a new array.
+      const newPetsArr = petShopArr.splice(5);
+      console.log('newPetsArr:', newPetsArr);
+      console.log('petShopArr:', petShopArr);
+
+      console.log("index of 'dog' is: ", petShopArr.indexOf('dog'));//3
+      console.log("index of 'goldfish' is: ", newPetsArr.indexOf('goldfish'));//0
+      // 'bunny', 'parrot', 'canary', 'cat', 'dog', 'gerbil', 
+      // 'goldfish', 'hamster', 'iguana', 'snake', 'tarantula', 'turtle'
+      
+      // BONUS 1: The cat has hacked the "database", and changed 
+      // "cat" to "cats rule" and "dog" to "dogs drool"
+      // Log the result as evidence of the cat's crime.
+
+      petShopArr.splice(2,2,"cats rule", "dogs drool");
+      console.log("Hacked database:", petShopArr);
+
+      // another way to do this
+      let dog_index = petShopArr.indexOf('dog');
+      let cat_index = petShopArr.indexOf('cat');
+
+      petShopArr[dog_index] = 'dogs drool';
+      petShopArr[cat_index] = 'cats rule';
+      console.log("Hacked database2:", petShopArr);
+      // BONUS 2: Use a loop to make the "cat" / "dog" changes.
+        /*
+CHALLENGE: 
+Write a function that takes in a word and uses string.includes() 
+to check if inputted word begins with a vowel
+
+if word begins AND ends with a vowel, such as 'orange',
+  return 'orange begins and ends with a vowel'
+
+if word begins with a vowel, such as 'apple': 
+  return 'apple begins with a vowel' 
+
+if word does not begin wtih a vowel, such as 'banana':
+  return 'banana does not begin with a vowel'
+
+use str.toLowerCase() to check upper and lower case: 
+'Apple begins with a vowel'
+'Banana does not begin with a vowel'
+'Orange begins and ends with a vowel'
+
+// BONUS CHALLENGE: write a function called makeShuffledDoubles()
+// that takes an array as its argument and returns a randomized ("shuffled") 
+// array of twice the length of the original with each item represented twice 
+// (2 apples, 2 cats, etc.)
+        
+*/
+
+
+    </script>
+    
+</body>
+
+</html>

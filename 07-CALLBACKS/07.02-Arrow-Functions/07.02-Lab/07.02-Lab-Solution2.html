@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 07.02</title>
+    <style>
+    
+        body { 
+            background-color: #555;
+            color: #555;
+            font-family: sans-serif;
+            text-align: center;
+        }
+
+        .container {
+            margin: 50px auto;
+            padding: 30px;
+            border-radius: 10px;
+            border: 3px solid #999;
+            width: 650px;
+            height: 65vh;
+            background-color: #ccc;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Lab 07.02</h1>
+        <h2>See console for output</h2>
+    </div>
+
+    <script>
+
+        // given array of veggies
+        const veggies = ['beet', 'carrot', 'celery', 'cucumber', 'broccoli',
+'cauliflower', 'kale', 'lettuce'];
+
+        const vegCs = veggies.filter(function(veg) {
+            return veg[0] == 'c';
+        });
+        console.log('vegCs:', vegCs);
+
+        const vCs = veggies.filter(v => v[0] == 'c');
+        console.log('vCs:', vCs);
+
+        // now comes "crunch time"
+        crunchyVegCs = vCs.map(function(v) {
+            return `crunchy ${v}`;
+        });
+        console.log('crunchyVegCs:', crunchyVegCs);
+
+        // filter and map in one fell swoop w method chaining & arrow syntax
+        cruchyVCs = veggies.filter(v => v[0] == 'c').map(v => `crunchy ${v}`);
+        console.log('cruchyVCs:', cruchyVCs);
+
+        // write the if-else if-else logic that checks a word and pluralizes it
+        const fruits = ["apple", "banana", "blueberry", "cherry", "grape",
+"kiwi", "lemon", "mango", "orange", "papaya", "peach", "strawberry"];
+
+        const furniture = ["Desk", "Hutch", "Vanity", "Chair", "Bed", "Couch", "Table", "Sofa", "Card Table", "Tea Table", "Chest", "Dresser", "Sideboard"];
+
+        function pluralize(arr) {
+
+            const pluralsArr = [];
+
+            for(let i = 0; i < arr.length; i++) {    
+                let word = arr[i];
+                let lastChar = word.slice(-1); // get the last character
+                let plural = "";
+
+                if(lastChar == 'y') { // if word ends in "y", 
+                    let upToLastChar = word.slice(0,-1); //  drop the "y" --> 'cherr'
+                    plural = upToLastChar + 'ies'; // add "ies" ("cherr" -> "cherries")
+                } else if(lastChar == 'h' || lastChar == 'o') { // if word ends in "h" or "o", 
+                    plural = word + 'es'; // add "es" ("peach" --> "peaches", "mango" --> "mangoes")
+                } else {
+                    plural = word + 's'; // otherwise, just add "s" ("apple" --> "apples")
+                }
+                pluralsArr.push(plural);
+
+            } // end for loop
+            return pluralsArr;
+        } // end function pluralize()
+
+        let pluralizedFruits = pluralize(fruits);
+        console.log(pluralizedFruits);
+
+        let pluralizedFurniture = pluralize(furniture);
+        console.log(pluralizedFurniture);
+
+        // refactor: map() instead of a for loop
+        const pluralMappedFruits = fruits.map(word => {
+            let lastChar = word.slice(-1); // get the last character
+            let plural = "";
+            if(lastChar == 'y') { // if word ends in "y", 
+                let upToLastChar = word.slice(0,-1); //  drop the "y" --> 'cherr'
+                plural = upToLastChar + 'ies'; // add "ies" ("cherr" -> "cherries")
+            } else if(lastChar == 'h' || lastChar == 'o') { // if word ends in "h" or "o", 
+                plural = word + 'es'; // add "es" ("peach" --> "peaches", "mango" --> "mangoes")
+            } else {
+                plural = word + 's'; // otherwise, just add "s" ("apple" --> "apples")
+            }
+            return plural;
+        });
+
+        console.log('pluralMappedFruits:\n', pluralMappedFruits);
+
+        // refactoring sort() method callbacks:
+        // sort fruits array (A-Z):
+        fruits.sort();
+        console.log(fruits);
+
+        furniture.sort();
+        console.log(furniture);
+
+        let nums = [32, 2, 353, 21, 64, 8, 123, 95, 5];
+        // sort nums in numeric order, ascending
+        nums.sort();
+        console.log(nums); // [123, 2, 21.. etc.]
+
+        // proper numeric sort requires callback
+        nums.sort(function(a,b) {
+            return a - b;
+        });
+
+        // arrow version of above numeric sort:
+        nums.sort((a,b) => a - b);
+
+        console.log('arrow sorted nums:', nums);
+
+        let floors = [1,2,3,5,6,7,8,9,10,11,12,14,15,16,17];
+        // randomizer algo
+        floors.sort(function(a,b) {
+            return Math.random() - 0.5;
+        });
+
+        console.log(floors);
+
+        // arrow version of randomizer 
+        floors.sort((a,b) => Math.random() - 0.5);
+
+        console.log(floors);
+        
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Lab 02.03</title>
+    
+    <link href="../css/basic-pg-console.log.css" rel="stylesheet">
+
+</head>
+<body>
+
+    <div class="container">
+
+        <div>
+            <h1>JS Lab 02.03 
+                <br>Ternary Expressions 
+                <br>&& (AND), || (OR) operators
+                <br>Switch Case Break Default
+            </h1>   
+            <h3>See script tag in this html file for lab assignment.</h3>
+            <h3>As you work, check the console for output and <span style="color:red">red error messages</span>. 
+            <h3>Please check Lab Solution file only after giving the Lab your best effort!</h3>
+        </div>
+
+    </div>
+    
+    <script>
+
+        // Lab 02.03
+
+
+        // Multiple "if conditions"
+
+        // 1. Given three variables, R, G, B, write an "if else" where:
+        //    - if all R, G, B values are the same:
+        //      - set isGray boolean to true
+        //      - else set isGray to false.
+
+        // R, G, B values must be integers in the 0-255 range
+        let R = G = B = 0;
+        let allSame;
+
+        // ANS:
+        R=1;
+        if ((R>=0 && R<=255) && (G>=0 && G<=255) && (B>=0 && B<=255)) {
+            if (R == G && G == B && R == B) {
+                allSame = true;
+            } else {
+                allSame = false;
+            }
+        } else {
+            console.log("Inavlid RGB numbers")
+        }
+
+        console.log(`R:${R}, G:${G}, B:${B} - allSame:', ${allSame}`);
+
+
+        // 2. Expanding upon #1 above, given a color variable:
+        let color = "";
+        //    Set the color value according to these rules:
+        //    - if R, G and B are ALL the same exact number:
+        //       - if R, G, B are all 0, set color to "black",
+        //       - if R, G, B are all 255, set color to "white",
+        //       - otherwise, set color to "gray",
+        //    - if R, G and B are NOT all the same:
+        //       - set color to "not gray"
+
+        //    Log both variables: allSame and color
+        //    Try different values of R, G and B to get all possible results.
+
+
+        // ANS:
+        R=G=B=10;
+        if ((R>=0 && R<=255) && (G>=0 && G<=255) && (B>=0 && B<=255)) {
+            if (R == G && G == B && R == B) {
+                allSame = true;
+                color = R==0 ? "black" : R==255 ? "white" : "gray";
+            } else {
+                allSame = false;
+                color="not gray";
+            }
+        } else {
+            console.log("Inavlid RGB numbers");
+        }
+        
+        console.log('allSame:', allSame, ' - color:', color);
+
+
+        // 3. Expanding upon #2, above, add logic where:
+        //    - if gray R,G,B values are 0, set color to "black"
+        //    - if gray R,G,B values are in the 1-55 range, set color to "dark gray"
+        //    - if gray R,G,B values are in the 56-199 range, set color to "medium gray"
+        //    - if gray R,G,B values are in the 200-254 range, set color to "light gray"
+        //    - if gray R,G,B values are 0, set color to "white"
+        //    - if not R,G,B values not all same, set color to "not gray"
+
+        // ANS:
+        R=G=B=255;
+        R=13;
+
+        if (R>=0 && R<=255 && G>=0 && G<=255 && B>=0 && B<=255) {
+            if (R == G && G == B) {
+                allSame = true;
+                if (R==0) {
+                    color = "black";
+                 } else if (R==255) {
+                    color = "white";
+                 } else {
+                    color= "gray";
+                    if (R>1 && R<=55) {
+                        color = "dark gray";
+                    } else if (R>=56 && R<=199) {
+                        color = "medium gray";
+                    } else {
+                        color = "light gray";
+                    }
+                 }
+            } else {
+                allSame = false;
+                color = "not gray";
+            }
+        } else {
+            console.log("Inavlid RGB numbers");
+        }
+
+        console.log('color:', color, allSame);
+
+        // Converting if-else to ternary:
+
+
+        // 4. Write an if-else and then convert it to a ternary; 
+        //    - if x is less than or equal to y, divide x by y
+        //    - if x is greater than y, divide y by x
+        //    - in either case, set z equal to the answer 
+        //    Try different x and y values so that the if and else parts both run.  
+        //    the logic is such that z can never be greater than 1
+        let x = 1;
+        let y = 2;
+        let z = 0;
+
+        // ANS:
+        if (x <= y) {
+            z = x / y;
+        } else {
+            z = y / x;
+        }
+      
+
+        console.log(z); // 0.5
+
+        // ANS:
+        // TERNARY:
+        z = x <= y ? x / y : y / x;
+
+        
+        console.log(z); // 0.5
+
+        
+        // 5. Given these variables:
+        let msg = "";
+        let str1 = 'jupiter';
+        let str2 = 'jupiter';
+        // Using "if - else if - else" logic, compare str1 and str2, 
+        // alphabetically, such that:
+        //     - if str1 comes before str2 (str1 = "apple", str2 = "banana")
+        //       - set msg to "apple before banana"
+        //       - if str2 comes before str1 (str1 = "dog", str2 = "cat")
+        //     - set msg to "cat before dog"
+        //       - if they are identical (str1 = "kiwi", str2 = "kiwi")
+        //       - set msg to: "double kiwi"
+
+        //  Assume str1 and str2 are lowercase, non-empty strings.
+        //  Test the logic  for all 3 outcomes.
+
+        // ANS:
+        if (str1 < str2) {
+            msg = `${str1} before ${str2}`
+        } else if (str1 > str2) {
+            msg = `${str2} before ${str1}`
+        } else {
+            msg = `double ${str1}`
+        }
+ 
+        console.log(msg);
+
+    
+
+        // 6. Expanding upon #5, given this additional variable:
+        let half = "";
+
+        // In a separate piece of "if - else if - else" logic, set the value of half, according to these rules:
+        //   - if str1 and str2 both start with "a" - "m" (str1 = "bat", str2 = "man")
+        //      - set half to "both 1st half" 
+        //   - if str1 and str2 both start with "n" - "z" (str1 = "north", str2 = "south")
+        //      - set half to "both 2nd half" 
+        //   - if str1 and str2 start with letters from different halves (str1 = "east", str2 = "west")
+        //      - set half to "different halves"
+        //   - if str1 and str2 are the same
+        //      - don't change half; it stays an empty string
+
+        // Concatenate msg and half into a single string and log it:  
+        // Examples:
+
+        // - str1 = "apple", str2 = "cat" logs "apple before cat - both 1st half" 
+        // - str1 = "noodle", str2 = "rice" logs "noodle before rice - both 2nd half"
+        // - str1 = "up", str2 = "down" logs "down before up - different halves"
+        // - str1 = "papaya", str2 = "papaya" logs "double papaya"
+        
+        // ANS:
+        if (str1 < str2) {
+            msg = `${str1} before ${str2}`;
+        } else if (str1 > str2) {
+            msg = `${str2} before ${str1}`;
+        } else {
+            msg = `double ${str1}`;
+        }
+        if (str1 == str2) {
+            half = "";
+        } else if ((str1[0] >= 'a' && str1[0] <= 'm') && (str2[0] >= 'a' && str2[0] <= 'm')) {
+            half = "both first half = ";
+        } else if ((str1[0] >= 'n' && str1[0] <= 'z') && (str2[0] >= 'n' && str2[0] <= 'z')) {
+            half = "both second half = ";
+        } else {
+            half = "different halves - ";
+        }
+        msg = half + msg;
+        console.log(msg);
+
+
+        // 7. Given these variables, num and doubleDigit, where we may assume that num is a positive integer, write an "if else" where: 
+        //  if num is 2-digits (10-99), set doubleDigit to true
+        //  if num is NOT 2-digits (0-9, 100+), set doubleDigit to false
+        let num = 12;
+        let doubleDigit;
+
+        // ANS:
+        if(num >= 10 && num <= 99) {
+            doubleDigit = true;
+        } else {
+            doubleDigit = false;
+        }
+        console.log('if-else doubleDigit:', doubleDigit);
+
+
+        // 8. Convert the "if else" for #7 to a ternary
+
+        // ANS:
+        // ternary version:
+        doubleDigit = num >= 10 && num <= 99 ? true : false;
+        console.log('ternary doubleDigit:', doubleDigit);
+
+        // 9. Convert the following "if - else if - else" 
+        //    to "switch - case - break - default"
+        //    here is a recap of the syntax:
+        /* 
+        - compare value in switch parentheses to the case value:
+        - switch("apple") case: "apple"
+        - if they match, the code after case runs, stopping at break
+        - if they do not match, go on to consider the next case
+        - if end is reached with no switch-case match, default runs
+        */
+
+        let country = "Ghana";
+        let continent = "";
+
+        if (country === "Canada") {
+            continent = "North America";
+        } else if (country === "China") {
+            continent = "Asia";
+        } else if (country === "Ghana") {
+            continent = "Africa";
+        } else if (country === "Bolivia") {
+            continent = "South America";
+        }  else if (country === "France") {
+            continent = "Europe";
+        } else {
+            continent = "continent unknown";
+        }
+        
+        // ANS ("switch - case - break - default" version):
+        country = "Ecuador";
+        
+        switch(country) {
+            case "Canada":
+                continent = "North America";
+                break;
+            case "China":
+                continent = "Asia";
+                break;
+            case "Ghana":
+                continent = "Africa";
+                break;
+            case "Bolivia":
+            case "Ecuador":
+            case "Peru":
+                continent = "South America";
+                break;
+            case "France":
+                continent = "Europe";
+                break;
+            default:
+                continent = "Unknown";
+
+        }
+        console.log(`${country} is in ${continent}`);
+
+    </script>
+    
+</body>
+</html>

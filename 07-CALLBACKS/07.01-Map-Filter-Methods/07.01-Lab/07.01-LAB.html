@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>07.01 Map, Filter Methods</title>
+
+    <!-- <link href="../../css/basic-pg-console.log.css" rel="stylesheet"> -->
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Lesson 07.01</h1>   
+        <h2>Array Callback Methods: map(), filter()</h2>
+
+        <h3>______________________</h3>
+
+        <h3>see console for output</h3>
+        <h3>switch script to FINAL version to see final result</h3>
+
+    </div>
+
+    <script>
+                
+        const veggies = ['beet', 'carrot', 'celery', 'cucumber', 'broccoli', 'cauliflower', 'lettuce'];
+
+        console.log(veggies[0]); // 'beet'
+        let pet = 'cat';
+        console.log(pet[0]); // 'c'
+        let veg = 'kale';
+        console.log(veg[0]); // 'k'
+        console.log(veggies[0][0]); // 'b'
+
+        // 1. for loop vs. map()
+
+        // 1A. Given this array of veggies, using a for loop, make a new array of freshVeggies containing all the veggies, but with fresh in front of each word: ['fresh beet', 'fresh carrot', etc]
+        const freshVeggies = [];
+
+        for (let i = 0; i < veggies.length; i++) {
+            freshVeggies.push('fresh ' + veggies[i]);
+        }
+
+        console.log(freshVeggies); // ['fresh beet', 'fresh carrot', etc]
+        
+        // 1B. Given an array of vegetables, use map() to make new array of fresh veggies: ['fresh beet', 'fresh carrot', etc]
+        const freshVegArr = veggies.map(function(veg) {
+            return `fresh ${veg}`;
+        })
+
+        console.log(freshVegArr); // ['fresh beet', 'fresh carrot', 'fresh celery', 'fresh cucumber', 'fresh broccoli', 'fresh cauliflower', 'fresh lettuce'];
+
+        // 2. for loop vs. filter()
+
+        // 2A. Use a for loop to make a new array containing only the veggies that start with the letter 'c':
+        const C_veggies = [];
+
+          for (let i = 0; i < veggies.length; i++) {
+            //  if(veggies[i][0] == 'c') {
+                if(veggies[i].startsWith('c')) {
+                    C_veggies.push(veggies[i]);
+                }
+            // }
+          }
+        
+        console.log('C_veggies', C_veggies); //  ['carrot', 'celery', 'cucumber', 'cauliflower']
+
+        // 2B. Use filter() to make a new array containing only the veggies that start with the letter 'c':
+        const C_vegArr = veggies.filter(function(veg) {
+            veg[0] == 'c';
+            // return veg.startsWith('c');
+        });
+
+        console.log('C_vegArr', C_vegArr); //  ['carrot', 'celery', 'cucumber', 'cauliflower']
+
+        // 2C. using for loop, make 2 new arrays: one containing only 'C veggies'. the other only 'B veggies' (bonus: use ternary instead of if-else if)
+        const Cveggies = [];
+        const Bveggies = [];
+
+        for(let i = 0; i < veggies.length; i++) {
+            if(veggies[i][0] == 'c') {
+                Cveggies.push(veggies[i]);
+            } else if(veggies[i][0] == 'b') {
+                Bveggies.push(veggies[i]);
+            } else { // if veg doesn't start with 'c' or 'b' do nothing
+                continue; // skip this one
+            }
+        }
+
+        // 2D. using filter(), make 2 new arrays: one containing only 'C veggies'. the other only 'B veggies' (bonus: use ternary instead of if-else)
+        const Cvegs = veggies.filter(function(v) {
+            return v[0] == 'c';
+        })
+        console.log('Cvegs', Cvegs); // ['carrot', 'celery', 'cucumber', 'cauliflower'] 
+
+        const Bvegs = veggies.filter(function(v) {
+            return v[0] == 'b';
+        })
+        console.log('Bvegs', Bvegs); // ['beet', 'broccoli']
+
+
+
+        
+
+
+
+
+        // 3. Using filter-into-map chaining, get just the veggies that start with 'c', but with the word 'crunchy' before each veggie:
+
+ 
+        console.log('crunchyVeg', crunchyVeg); //  ['crunchy carrot', 'crunchy celery', 'crunchy cucumber', 'crunchy cauliflower']
+
+        // **pluralize words**  
+        // 3B. Using **map**, pluralize each fruit in the provided fruits array:
+
+        const fruits = ["apple", "banana", "blueberry", "cherry", "grape", "kiwi", "lemon", "mango", "orange", "papaya", "peach", "strawberry", "boysenberry"];
+
+        // Pluralization rules are as follows:
+
+        // - if word ends in "y", drop the "y" and add "ies" ("cherry" -> "cherries")
+        // - if word ends in "h" or "o", add "es" ("peach" --> "peaches", "mango" --> "mangoes")
+        // - otherwise, add "s" ("apple" --> "apples")
+
+
+        console.log('fruitPl', fruitPl);
+        
+        // 4. Given two arrays, **furniture** and **woods**, use map to generate a new **woodFurniture** array, having all ten pieces of furniture, each with a random wood types:
+
+        const furniture = ["Desk", "Chair", "Bed", "Table", "Sofa", "Card Table", "Tea Table", "Chest", "Dresser", "Sideboard"];
+
+        const woods = ["Oak", "Walnut", "Mahogany", "Maple"];
+
+        console.log(woodFurniture);
+        // HINT: inside the function, generate a random number in the range of the woodTypes array and use that number to get a random wood
+
+
+        // **assigning apartment numbers**
+        // **using map to make a 2D array from a 1D array**
+
+        // 5. An apartment building has four apartments on each of six floors. The floors and apt letters are provided:
+
+        const floors = [1,2,3,4,5,6];
+        const letters = ['A', 'B', 'C', 'D'];
+
+        // Using map, generate all 24 apartment units and save them to a nested array, consisting of 6 items, each an array of 4 items.
+
+
+        // or: a nested map()
+  
+
+        // Desired output:
+        // // [ ['1A', '1B', '1C', '1D'], ['2A', '2B', '2C', '2D'], ['3A', '3B', '3C', '3D'], ['4A', '4B', '4C', '4D'], ['4A', '4B', '4C', '4D'], ['6A', '6B', '6C', '6D']]
+
+
+    </script>
+
+</body>
+
+</html>

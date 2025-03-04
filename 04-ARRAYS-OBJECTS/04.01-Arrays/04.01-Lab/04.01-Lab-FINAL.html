@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="../css/basic-pg-console.log.css" rel="stylesheet">
+
+    <title>Lab 04.01 PROG</title>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Lab 04.01 PROG</h1>
+        <h2>Arrays</h2>
+
+    </div>
+    
+    <script>
+
+        // 04.01 Lab
+
+        // 1. Declare an array called gems, and assign it three gems of your choosing.
+        const gems =['diamond','ruby','emerald'];
+        
+        // 2. Log the entire array and also the first item.
+        console.log(gems, gems[0]);
+
+        // 3. Add 'sapphire' to the end of the array, using the index of the new item. If sapphire is already in the array, add another gem.
+        gems[3] = 'sapphire';
+        
+        // 4. Using an array method, add 'amethyst' to the end of the array  If amethyst is already in the array, add some other gem.
+        gems.push('amethyst');
+        console.log(gems); // ['diamond','ruby','emerald','sapphire','amethyst']
+
+        // 5. Use an array method to put the gems in alphabetcial order.
+        gems.sort();
+        console.log(gems);
+
+        // 6. Log the number of items of the array. The result should be 5.
+        console.log(gems.length); // 5
+
+        // 7. Save the next to last gem to a variable, without deleting it:
+        let nextToLastGem = gems[gems.length-2];
+        console.log('nextToLastGem:', nextToLastGem); // sapphire
+
+        // 8. Use one array method to remove the last gem from the array, and then another array method to put the item right back at the end.
+        let poppedGem = gems.pop();
+        gems.push(poppedGem);
+        console.log(gems);
+
+        /*
+        9. Make a nested array called months, containing:
+        'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct','Nov', 'Dec'.
+        with 4 child arrays of 3 months each. */
+        const months = [['Jan', 'Feb', 'Mar'], 
+                        ['Apr', 'May', 'Jun'], 
+                        ['Jul', 'Aug', 'Sep'], 
+                        ['Oct','Nov', 'Dec']];
+
+        // 10. Log all months that start with 'J' or 'M'.
+        console.log('start with J: ', months[0][0], months[1][2], months[2][0]);
+        console.log('start with M: ', months[0][2], months[1][1]);
+
+        // for (current_item of array)
+        for (let quarter of months) {
+            for (let month of quarter) {
+                if (month[0] == 'J' || month[0] == 'M') {
+                    console.log(month);
+                }
+            }
+        }
+
+        // another way without a nested loop is to first flatten the array
+        const flatMonths = months.flat();
+
+        for (let month of flatMonths) {
+            if (month[0] == 'J' || month[0] == 'M') {
+                console.log('flat:', month);
+            }
+        }
+
+        console.log('nested months:', months);
+        console.log('flatMonths:', flatMonths);
+
+        
+        // 10. Given this list of numbers:
+        const nums = [111, 23, 202, 12, 23, 1000, 2006, 1, 2, 14, 28.];
+        /* Put them into an array called nums and then sort the array in descending order.
+        HINT: You need to use an array method that takes a callback function.
+        */
+        nums.sort(function(a,b){
+            return b - a;
+        })
+        console.log(nums);
+        
+        /*
+        11. BONUS I:
+        Write a function that takes TWO arguments: an array of strings, and a new string to add to the end of the array. The function adds the string to the array, sorts the array from A-Z, and returns the new array. If the input is NOT a string the function returns: 'INVAID INPUT: function expects a string argument'
+        */
+        function addStringToArray(arrStrings, newString) {
+            if (typeof newString === "string") {
+                arrStrings.push(newString);
+                arrStrings.sort();
+                return arrStrings;
+            } else {
+                return "INVALID INPUT: function expects a string argument";
+            }
+        }
+
+        let puppies = ["Rambles", "Pon Pon", "Blue"];
+        console.log(addStringToArray(puppies, "Bentley"));
+        console.log(addStringToArray(puppies, 15));
+
+        /*
+        11. BONUS II:
+        Write a function that takes TWO arguments: an array of 4-letter strings, and a new string to possibly add to the end of the array. If the string argument is 4 letters, the function adds the string to the array, nd returns the new array, unsorted. If the input is NOT a
+        string or if the string passed to it is not 4 chars, exactly, the function returns: 'INVAID INPUT: function expects a 4-char string argument'
+        */
+        function add4CharStringToArray(arrStrings, newString) {
+            if (typeof newString === "string") {
+                if (newString.length === 4) {
+                    arrStrings.push(newString);
+                    arrStrings.sort();
+                    return arrStrings;
+                } else {
+                    return "INVALID INPUT: function expects a 4-char string argument";
+                }
+            } else {
+                return "INVALID INPUT: function expects a 4-char string argument";
+            }
+        }
+
+        let pets = ["Fido", "Buni", "Claw"];
+        console.log(add4CharStringToArray(pets, "Izzy"));
+        console.log(add4CharStringToArray(pets, "Rover")); // wrong str len
+        console.log(add4CharStringToArray(pets, 15)); // wrong datatype
+        
+    </script>
+    
+</body>
+
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>03.02 Functions & DOM Events</title>
+
+	<link href="css/funcs.css" rel="stylesheet">
+	<link href="css/basic-pg-console.log.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+	<div class="container">
+
+		<h1>Lesson 03.02: 'click' and 'change' events</h1>
+
+		<div id="greetings-box" style="background-color: coral;">
+			<button id="greet-world-btn">greet world</button>
+			<input type="text" id="first-name" placeholder="First Name">
+			<input type="text" id="last-name" placeholder="Last Name">
+			<button id="greet-user-btn">greet user</button>
+		</div>
+
+		<select id="fruit-menu">
+			<option value="choose">Pick a Fruit:</option>
+			<option value="apple" data-food="apple sauce">Apple</option>
+			<option value="apricot" data-food="dried apricots">Apricot</option>
+			<option value="banana" data-food="banana bread">Banana</option>
+			<option value="blueberry" data-food="blueberry muffins">Blueberry</option>
+			<option value="boysenberry" data-food="boysenberry yogurt">Boysenberry</option>
+			<option value="cherry" data-food="cherry pie">Cherry</option>
+			<option value="cranberry" data-food="cranberry juice cocktail">Cranberry</option>
+			<option value="dragon fruit" data-food="dragon fruit cheesecake">Dragon Fruit</option>
+			<option value="grape" data-food="grape jelly">Grape</option>
+			<option value="kiwi" data-food="kiwi parfait">Kiwi</option>
+			<option value="lemon" data-food="lemonade">Lemon</option>
+			<option value="lime" data-food="key lime pie">Lime</option>
+			<option value="mango" data-food="mango salsa">Mango</option>
+			<option value="orange" data-food="orange marmalade">Orange</option>
+			<option value="papaya" data-food="papaya smoothie">Papaya</option>
+			<option value="peach" data-food="peach cobbler">Peach</option>
+			<option value="pear" data-food="maple pear tart">Pear</option>
+			<option value="pineapple" data-food="pineapple upside down cake">Pineapple</option>
+			<option value="plum" data-food="plum pudding">Plum</option>
+			<option value="raspberry" data-food="raspberry jam">Raspberry</option>
+			<option value="star fruit" data-food="star fruit chips">Star Fruit</option>
+			<option value="strawberry" data-food="strawberry ice cream">Strawberry</option>
+			<option value="tangerine" data-food="tangerine sherbet">Tangerine</option>
+			<option value="watermelon" data-food="watermelon juice">Watermelon</option>
+		</select>
+
+		<input type="checkbox" id="cb" checked>
+		<label for="cb">Add Snack</label>
+
+		<div class="calculator">
+			
+			<input type="number" id="num1" value="0"><!-- step="2" (+=2) -->
+			<select id="math-menu" style="width:120px;">
+				<option value="+">+</option>
+				<option value="-">-</option>
+				<option value="*">*</option>
+				<option value="/">&divide;</option>
+				<option value="%">mod</option>
+				<option value="**">exp</option>
+			</select>
+			<!-- min="1" max="1000" sets min and max inputs-->
+			<input type="number" id="num2" value="0">
+		</div>
+
+		<h2 id="out-box">output</h2>
+
+		<div id="fahr-cels">
+
+			<div id="fahr">
+				<input type="number" id="f" value="0">
+				<label for="f">Fahrenheit</label>
+			</div>
+			
+			<div>=</div>
+			
+			<div id="cels">
+				<input type="number" id="c" value="0">
+				<label for="c">Celsius</label>
+			</div>
+
+		</div>
+
+	</div>
+
+	<!-- START JS : -->
+	<!-- <script src="js/03.02-Functions-DOM-events-START.js"></script> -->
+
+	<!-- PROG JS : -->
+	<!-- <script src="js/03.02-Functions-DOM-events-PROG.js"></script> -->
+
+    <!-- FINAL JS : -->
+    <script src="js/03.02-Functions-DOM-events-FINAL.js"></script>
+	
+</body>
+</html>

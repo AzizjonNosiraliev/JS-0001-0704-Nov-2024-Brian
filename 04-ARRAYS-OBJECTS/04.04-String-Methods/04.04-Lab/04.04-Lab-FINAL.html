@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Lab 04.02</title>
+    
+	<style>
+    
+        body { 
+            background-color: #555;
+            color: #555;
+            font-family: sans-serif;
+            text-align: center;
+        }
+
+        .container {
+            margin: 50px auto;
+            padding: 30px;
+            border-radius: 10px;
+            border: 3px solid #999;
+            width: 650px;
+            height: 65vh;
+            background-color: #ccc;
+        }
+
+        img {
+            width: 90px; 
+            float:left; 
+            padding-right:30px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Lab 04.04 Solution</h1>
+        <h2>Working with String Methods</h2>
+
+    </div>
+    
+    <script>
+
+       // 04.04 Lab Solution
+
+        // Given this array of vegetables:
+        const veggies = ['Cucumber', 'Tomato', 'Kale'];
+
+        // 1. Use the replace() method and array items to log the expected message to the console:
+        let msg1 = "Have you ever ordered the Sandwich?";
+        msg1 = msg1.replace('Sandwich', veggies[0] + ' Sandwich')
+        console.log(msg1); // Have you ever ordered the Cucumber Sandwich?
+
+        // 2. Use the replace() method and array items to log the expected message to the console:
+        let msg2 = 'The "T" in "BLT" stands for "Terminator."';
+        msg2 = msg2.replace('Terminator', veggies[1]);
+        console.log(msg2); // The "T" in "BLT" stands for "Tomato."
+
+        // 3. Use the replace() method and array items to log the expected message to the console:
+        let msg3 = "Bunny goes to Yale University.";
+        msg3 = msg3.replace('Yale', veggies[2]);
+        console.log(msg3); // Bunny goes to Kale University." 
+
+        // Given this array of phrases: 
+        const phrases = ["A real customer", "A breeze", "Hangin' with the kids", "Snoopy is a dog"];
+
+        // 4. Using string methods and concatenation, make "cool" the next to the last word
+        // no matter which phrase is chosen. Expected output is one of the following:
+        /// a real cool customer, a cool breeze, hanging out with the cool kids, Snoopy is a cool dog
+        // Since we can't predict what the random phrase will be, we cannot use the replace() 
+        // method on a hard-coded last word of the string
+        // So, where does cool need to go? It needs to go in at the last space location.
+        // What string method returns the last space of a phrase: lastIndexOf(" ")
+        // test this on phrases[0], which is the first item in phrases
+        // Save the last index of the the space to a variable
+        let lastSpaceIndex = phrases[0].lastIndexOf(' ');
+        console.log('phrases[0] Index Of last Space:', lastSpaceIndex);
+
+        // then use the slice() method twice: once to get everything up to (but not including) the first space
+        // use the slice() method again to get everything from the last space to the end of the string
+        // concatenate the two slices together--with " cool " in between.
+        let coolPhrase = phrases[0].slice(0, lastSpaceIndex) + " cool" + phrases[0].slice(lastSpaceIndex);
+        console.log("Cool phrase 0 test:", coolPhrase);
+
+        // test the result with a random number in the range of the array
+        let r = Math.floor(Math.random() * phrases.length); // 0-3 range
+        lastSpaceIndex = phrases[r].lastIndexOf(' ');
+
+        coolPhrase = phrases[r].slice(0, lastSpaceIndex) + " cool" + phrases[r].slice(lastSpaceIndex);
+
+        // get the index of the last space of the new, randomly selected phrase
+        // concatenate the two slices together--with " cool " in between.
+        console.log("Random cool phrase:", coolPhrase);
+
+        // Given this array of fruits and vegetables:
+        const words = ['Avocado', 'Broccoli', 'Cauliflower', 'Dragonfruit', 'Eggplant'];
+        // 5. Use the includes() method and if-else logic to check if the word starts with a consonant or a vowel
+        // If the word is "Avocado", log: Avocado starts with "A", which is a vowel.
+        // If the word is "Broccoli", log: Broccoli starts with "B", which is a consonant.
+        r = Math.floor(Math.random() * words.length); // 0-4 range
+        let word = words[r];
+        let firstChar = word[0];
+        console.log('firstChar', firstChar);
+        let vowels = 'aeiouAEIOU';
+        if(vowels.includes(firstChar)) { // if the word starts with a vowel
+            console.log(`${word} starts with "${firstChar}", which is a vowel`);
+        } else {
+            console.log(`${word} starts with "${firstChar}", which is a consonant`);
+        }
+
+        // REFACTOR: Since the if-else console logs differ only in one word: vowel / consonant,
+        // better would be to have a variable "consonant" that the if statements sets to "vowel" 
+        // and then concat that "consonant" or "vowel" variable into the output:
+        // Try it again:
+        console.log('\nREFACTORED to be more concise code:');
+        let consonantOrVowel = "consonant";
+        if(vowels.includes(firstChar)) consonantOrVowel = "vowel";
+        console.log(`${word} starts with "${firstChar}", which is a ${consonantOrVowel}`);
+
+        // Given this file name:
+        let fileName = "Mets-Lead-Off-Game-By-Hitting-Three-Straight-Homers.html";
+        // 6. Turn the file name into a news headline, with all words capitalized:
+        // Expected result: 
+        // Mets Lead Off Game By Hitting Three Straight Homers
+        let wordsArr = fileName.split('-');
+        console.log(wordsArr); // ['Mets', 'Lead', 'Off', 'Game', 'By', 'Hitting' .. etc.]
+        let headline = wordsArr.join(' ');
+        // remove the file extension, but don't assume '.html' -- detect the dot
+        // and remove everything from the dot to the end of the string
+        let indexOfDot = headline.indexOf('.');
+        headline = headline.slice(0, indexOfDot);
+        // use slice() method to get everything from the beginning of the string to
+        // to dot (but not includding the dot)
+        console.log(headline);
+
+        // REFACTOR: 
+        headlineFromFileName = fileName.replaceAll('-', ' ');
+        indexOfDot = headlineFromFileName.indexOf('.');
+        headlineFromFileName = headlineFromFileName.slice(0, indexOfDot);
+        console.log(headlineFromFileName);
+
+         // slice() and includes() are methods of BOTH arrays AND strings:
+         const animals = ["deer", "fish", "moose", "sheep", "swine", 
+         "bison", "cod", "salmon", "shrimp", "trout"];
+
+        // array.slice(start_index, end_index_exclusive) 
+        // -- sheep plus next 3 (you do not know where the sheep is)
+        // let sheepPlus3 = animals.slice(); 
+        // console.log('sheepPlus3:'); // ["sheep", "swine",  "bison", "cod"]
+
+        let sheepIndex = animals.indexOf("sheep"); // 3
+        let sheepPlus3 = animals.slice(sheepIndex, sheepIndex+4);
+        console.log('sheepPlus3:', sheepPlus3);
+
+        // Get next to last item, whatever it is:
+        // get animal at index 5, whatever animal that may be:
+        let animalAtIndex5 = animals.slice(5,6);  // or animals[5]
+        console.log('animalAtIndex5:', animalAtIndex5); // ['bison']
+        animalAtIndex5 = animals[5]
+        console.log('animalAtIndex5:', animalAtIndex5); // bison
+
+        // slice allows negative indexing:
+        let nextToLast = animals.slice(-2,-1);
+        console.log('nextToLast:', nextToLast); // ['shrimp']
+        // then get just the string: shrimp
+        nextToLast = animals[animals.length-2];
+        console.log('nextToLast:', nextToLast);
+        
+        // string.slice() 
+        let place = "restaurant";
+        word = place.slice(0,4); // get first 4 chars
+        console.log('first 4 chars:', word); // rest
+        word = place.slice(-4);  // get the last 4 chars
+        console.log('last 4 chars:', word); // rant
+
+        // omit second argument to go to the end:
+        // use negative indexing
+        let fruit = "grapefruit"; 
+        word = fruit.slice(-5); // get last 5 chars: fruit
+        console.log(word);
+
+        // const animals = ["deer", "fish", "moose", "sheep", "swine", 
+        //  "bison", "cod", "salmon", "shrimp", "trout"];
+
+        // array.includes() 
+        if(animals.includes('deer')) {
+            console.log("Oh, deer!");
+        } else {
+            console.log("No 'deer'");
+        }
+
+        if(animals.includes('unicorn')) {
+            console.log("It's a unicorn!");
+        } else {
+            console.log("No 'unicorn'");
+        }
+
+        // fruit.string.includes()
+        fruit = "grapefruit"; 
+
+        if(fruit.includes('ape')) {
+            console.log("Grape Ape!");
+        } else {
+            console.log("No 'ape'");
+        }
+
+        if(fruit.includes('foo')) {
+            console.log("Foo Fruit");
+        } else {
+            console.log("No 'foo'");
+        }
+
+        // string.toLowerCase() method lowercases a string:
+        let froot = "baNaNa";
+        froot = froot.toLowerCase();
+        console.log("froot:", froot);
+
+
+        // using string.slice() and string.includes() in an algo challenge:
+
+        // 1. Write a function that takes in a singular noun and returns
+        //  the plural of the word, according to these rules:
+
+        // - if the word is in the animals array, the singular and plural are the same, 
+
+        // - if the word ends in "y", drop the "y" and add "ies"
+        // examples: "city" ==> "cities"   "cherry" ==> "cherries"
+
+        // - if the word ends in "o" , "h" or "x", add "es"
+        // examples: "mango" ==> "mangoes"   "echo" ==> "echoes"
+
+        // else if none of the above, just add 's'
+        
+        // - test the function on the seven words provided, below.
+
+        const irregulars = { mouse: "mice",  knife: "knives", octopus: "octopi", man: "men", woman: "women",
+                person: "people", child: "children", loaf: "loaves", wolf: "wolves", cactus: "cacti", goose: "geese", 
+                foot: "feet", criterion: "criteria", fungus: "fungi", index: "indices", hoof: "hooves", ox: "oxen" };
+
+        let car = {make: "Ford", model: "Mustang"};
+        console.log(car.make); // Ford
+        console.log(car['make']); // 
+
+        let key = 'octopus';
+        if(irregulars[key]) {
+            console.log(`plural of ${key} is ${irregulars[key]}`);
+        } else {
+            console.log(`${key} does not form an irregular plural`);
+        }
+
+        key = "cactus";
+        // which of theser return the expected 'cacti'
+        // console.log(irregulars.cactus); // cacti
+        // console.log(irregulars.key); // doesn't work
+        // console.log(irregulars[key]); // cacti
+        // console.log(irregulars[cactus]); // no because there is no cactus variable
+        // console.log(irregulars['cactus']); // cacti
+        // console.log(irregulars['key']); // no because there is no key called 'key'
+
+        function makePlural(word) {
+            const animals = ["deer", "fish", "moose", "sheep", "swine", "bison", "cod", "salmon", "shrimp", "trout"];
+            const irregPls = { 
+                mouse: "mice",  knife: "knives", octopus: "octopi", man: "men", woman: "women",
+                person: "people", child: "children", loaf: "loaves", wolf: "wolves", cactus: "cacti", goose: "geese", 
+                foot: "feet", criterion: "criteria", fungus: "fungi", index: "indices", hoof: "hooves", ox: "oxen" 
+            };
+            // A. check if the word is in the animals array
+            // if word is in animals array, singular and plural are the same, so return word
+            if(animals.includes(word)) return word;
+            // BONUS: Check if the word exists as a key in the irregular plurals object, and if so, return that value
+            if(irregPls[word]) return irregPls[word];
+            // word is NOT in animals array, nor is it a key of irregPls obj, so get last char to know what plural to do
+            // B. get the last letter of word, to lowercase
+            let lastChar = word.slice(-1);
+            console.log(word, 'lastChar:', lastChar);
+            // C. check if the word ends in "h", "o" or "x", add "es" to word
+            // if(lastChar == "h" || lastChar == "o" || lastChar == "x") {
+            if('hox'.includes(lastChar)) { 
+                return word + 'es';
+            }
+            // D. check if the word ends in "y"
+            if(lastChar == 'y') {
+                // E. concatenate "ies" onto all but last "y", which we get as slice(0,-1)
+                return word.slice(0,-1) + 'ies';
+            }
+            // F. if none of the above run, just add 's'
+            return word + 's';
+        }
+
+        // animals array words are the same in singular and plural
+        console.log(makePlural("moose")); // moose
+        console.log(makePlural("salmon")); // salmon
+        // word ends in "o", so add "es" to form plural:
+        console.log(makePlural("mango")); // mangoes
+        // word ends in "h", so add "es":
+        console.log(makePlural("peach")); // peaches
+        // word ends in "x", so add "es":
+        console.log(makePlural("box")); // boxes
+        console.log(makePlural("tax")); // taxes
+        // word ends in "y", so drop "y", so add "ies":
+        console.log(makePlural("cherry")); // cherries
+        console.log(makePlural("city")); // cities
+        // word ends in "y"--but that may not be the only "y"
+        console.log(makePlural("boysenberry")); // boysenberries
+        console.log(makePlural("cherry")); // cherries
+        // none of the above, so just add "s" to form the plural:
+        console.log(makePlural("apple")); // apples
+        console.log(makePlural("bee")); // bees
+        console.log(makePlural("elephant")); // elephants
+        // irreg plurals:
+        console.log(makePlural("octopus")); // octopi
+        console.log(makePlural("hoof")); // hooves
+        console.log(makePlural("woman")); // women
+        console.log(makePlural("knife")); // knives
+        console.log(makePlural("foot")); // feet
+        console.log(makePlural("child")); // children
+
+        // END: Lab 04.04
+        // NEXT: Lesson 04.05  
+
+    </script>
+    
+</body>
+
+</html>

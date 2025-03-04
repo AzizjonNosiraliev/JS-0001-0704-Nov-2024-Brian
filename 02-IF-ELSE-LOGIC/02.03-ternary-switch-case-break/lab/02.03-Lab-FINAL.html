@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Lab 02.03</title>
+    
+    <link href="../css/basic-pg-console.log.css" rel="stylesheet">
+
+</head>
+<body>
+
+    <div class="container">
+
+        <div>
+            <h1>JS Lab 02.03 
+                <br>Ternary Expressions 
+                <br>&& (AND), || (OR) operators
+                <br>Switch Case Break Default
+            </h1>   
+            <h3>See script tag in this html file for lab assignment.</h3>
+            <h3>As you work, check the console for output and <span style="color:red">red error messages</span>. 
+            <h3>Please check Lab Solution file only after giving the Lab your best effort!</h3>
+        </div>
+
+    </div>
+    
+    <script>
+
+        // Lab 02.03
+
+        // Multiple "if conditions"
+
+        // 1. Given three variables, R, G, B, write an "if else" where:
+        //    - if all R, G, B values are the same:
+        //      - set 'grayscale' to true
+        //      - else set 'grayscale' to false.
+
+    
+        // R, G, B values must be integers in the 0-255 range
+        let R = 50, G = 50, B = 50;
+        let grayscale;
+
+        // 0 is falsey
+        // check if R is not 0
+        if(R) { // if(R) is false because R is 0, which is falsey
+            console.log("R is not 0");
+        } else {
+            console.log("R is 0");
+        }
+
+        // 0 is falsey
+        // check if R is not 0
+        if(R) { // if(R) is false because R is 0, which is falsey
+            console.log("R is not 0");
+        } else {
+            console.log("R is 0");
+        }
+
+        // ANS:
+        if(R == G && R == B) {
+            grayscale = true;
+        } else {
+            false;
+        }
+
+        console.log('grayscale:', grayscale);
+        
+        // ternary version:
+        grayscale = R == G && R == B ? true : false;
+
+        console.log('grayscale:', grayscale);
+
+
+        // 2. Expanding upon #1 above, given a color variable:
+        let color = "";
+        //    Set the color value according to these rules:
+        //    - if R, G and B are ALL the same exact number:
+        //       - if R, G, B are all 0, set color to "black",
+        //       - if R, G, B are all 255, set color to "white",
+        //       - otherwise, set color to "grays",
+        //    - if R, G and B are NOT all the same:
+        //       - set color to "not gray"
+
+        //    Log both variables: grayscale and color
+        //    Try different values of R, G and B to get all possible results.
+
+        // ANS:
+        if(R == G && R == B) {
+            // if(R == 0) { 
+            //     color = "black";
+            // } else if(R == 255) {
+            //     color = "white";
+            // } else {
+            //     color = "gray";
+            // }
+            color = R == 0 ? "black" : R == 255 ? "white" : "gray";
+        } else { // R, G, B not all the same, so not B&W or gray
+            color = "not gray";
+        }
+       
+        console.log('grayscale:', grayscale, ' - color:', color);
+
+
+        // 3. Expanding upon #2, above, add logic where:
+        //    - if gray R,G,B values are in the 1-55 range, set color to "dark gray"
+        //    - if gray R,G,B values are in the 56-199 range, log "medium gray"
+        //    - if gray R,G,B values are in the 200-254 range, log "light gray"
+        
+        // ANS:
+        if(R == G && R == B) { // check if color is grayscale (R,G,B all same)
+            if(R == 0) { 
+                color = "black";
+            } else if(R == 255) {
+                color = "white";
+            } else {
+                if(R <= 55) {
+                    color = "dark gray";
+                } else if(R <= 199) {
+                    color = "medium gray";
+                } else {
+                    color = "light gray";
+                }
+            }
+        } else { // R, G, B not all the same, so not B&W or gray
+            color = "not gray";
+        }
+
+        console.log('grayscale:', grayscale, ' - color:', color);
+
+        // Converting if-else to ternary:
+
+
+        // 4. Write an if-else and then convert it to a ternary; 
+        //    - if x is less than or equal to y, divide x by y
+        //    - if x is greater than y, divide y by x
+        //    - in either case, set z equal to the answer 
+        //    Try different x and y values so that the if and else parts both run.  
+        //    the logic is such that z can never be greater than 1
+        let x = 40;
+        let y = 80;
+        let z = 0;
+
+        // ANS:
+        if(x <= y) {
+            z = x / y;
+        } else {
+            z = y / x;
+        }
+
+        console.log('z:', z); // 0.5
+
+        // ANS:
+        // TERNARY:
+        z = x <= y ? x/y : y/x;
+        
+        console.log('ternary z:', z); // 0.5
+
+        
+        // 5. Given these variables:
+        let msg = "";
+        let str1 = 'carrot';
+        let str2 = 'carrot';
+        // Using "if - else if - else" logic, compare str1 and str2, 
+        // alphabetically, such that:
+        //     - if str1 comes before str2 (str1 = "apple", str2 = "banana")
+        //       - set msg to "apple before banana"
+        //       - if str2 comes before str1 (str1 = "dog", str2 = "cat")
+        //     - set msg to "cat before dog"
+        //       - if they are identical (str1 = "kiwi", str2 = "kiwi")
+        //       - set msg to: "double kiwi"
+
+        //  Assume str1 and str2 are lowercase, non-empty strings.
+        //  Test the logic for all 3 outcomes.
+
+        // ANS:
+        if(str1 < str2) {
+            msg = `${str1} before ${str2}`;
+        } else if(str1 > str2) {
+            msg = `${str2} before ${str1}`;
+        } else { // str1 == str2 (they are the same)
+            msg = `double ${str2}`;
+        }
+ 
+        console.log('msg:', msg);
+        // Ternary: too long for practical use, but it does work:
+        msg = str1 < str2 
+            ? `${str1} before ${str2}` 
+            : str1 > str2 
+            ? `${str2} before ${str1}`
+            : `double ${str2}`;
+
+        // 6. Expanding upon #5, given this additional variable:
+
+        // In a separate piece of "if - else if - else" logic, set the value of half, according to these rules:
+        //   - if str1 and str2 both start with "a" - "m" (str1 = "bat", str2 = "man")
+        //      - set half to "both 1st half" 
+        //   - if str1 and str2 both start with "n" - "z" (str1 = "north", str2 = "south")
+        //      - set half to "both 2nd half" 
+        //   - if str1 and str2 start with letters from different halves (str1 = "east", str2 = "west")
+        //      - set half to "different halves"
+        //   - if str1 and str2 are the same
+        //      - don't change half; "same same"
+
+        // Concatenate msg and half into a single string and log it:  
+        // Examples:
+
+        // - str1 = "apple", str2 = "cat" logs "apple before cat - both 1st half" 
+        // - str1 = "noodle", str2 = "rice" logs "noodle before rice - both 2nd half"
+        // - str1 = "up", str2 = "down" logs "down before up - different halves"
+        // - str1 = "papaya", str2 = "papaya" logs "double papaya"
+        
+        // ANS:
+
+        let half = "";
+        str1 = 'banana';
+        str2 = 'apple';
+
+        if(str1 == str2) {
+            half = `same string (${str1})`;
+        } else if(str1[0] < 'n' && str2[0] < 'n') {
+            half = "both 1st half";
+        } else if(str1[0] > 'm' && str2[0] > 'm') {
+            half = "both 2nd half";
+        } else { // they are the same
+            half = "differnt halves";
+        }
+
+        console.log('half:', half);
+
+
+        // 7. Given these variables, num and doubleDigit, where we may assume that num is a positive integer, write an "if else" where: 
+        //  if num is 2-digits (10-99), set doubleDigit to true
+        //  if num is NOT 2-digits (0-9, 100+), set doubleDigit to false
+        let num = 8;
+        let doubleDigit;
+
+        // ANS:
+        if(num > 9 && num < 100) {
+            doubleDigit = true;
+        } else {
+            doubleDigit = false;
+        }
+       
+        console.log('doubleDigit:', doubleDigit);
+
+        // 8. Convert the "if else" for #7 to a ternary
+        doubleDigit = num > 9 && num < 100 ? true : false;
+
+        // ANS:
+
+        console.log('doubleDigit:', doubleDigit);
+
+
+        // 9. Convert the following "if - else if - else" 
+        //    to "switch - case - break - default"
+        //    here is a recap of the syntax:
+        /* 
+        - compare value in switch parentheses to the case value:
+        - switch("apple") case: "apple"
+        - if they match, the code after case runs, stopping at break
+        - if they do not match, go on to consider the next case
+        - if end is reached with no switch-case match, default runs
+        */
+
+        let country = "Ghana";
+        let continent = "";
+
+        if (country === "Canada") {
+            continent = "North America";
+        } else if (country === "China") {
+            continent = "Asia";
+        } else if (country === "Ghana") {
+            continent = "Africa";
+        } else if (country === "Bolivia") {
+            continent = "South America";
+        }  else if (country === "France") {
+            continent = "Europe";
+        } else {
+            continent = "continent unknown";
+        }
+        
+        // ANS ("switch - case - break - default" version):
+        country = "Ghana"; 
+
+        switch(country) {
+            case "Canada":
+                continent = "North America";
+                break;
+            case "China":
+                continent = "Asia";
+                break;
+            case "Ghana":
+                continent = "Africa";
+                break;
+            case "Bolivia":
+                continent = "South America";
+                break;
+            case "France":
+                continent = "Europe";
+                break;
+            default:
+                continent = "continent unknown";
+        }
+        console.log(`${country} is in ${continent}`);
+
+        /* 
+        BONUS: Do we go to the mall or not?
+        Write an "if else" such that we will go to the mall if we have a car AND if the mall is less than 10 miles away OR if traffic is light. If the mall is within walking distance, we go to the mall, because we don't need a car and we don't care about the traffic conditions. Walking distance is less than 2 miles.
+        */
+        let dist = 1.5;
+        let car = false;
+        let traffic = false;
+        let go;
+
+        if(dist < 2) {
+            go = true;
+        } else if(car && (dist < 10 || !traffic)) {
+            go = true;
+        } else {
+            go = false;
+        }
+
+        console.log(`Distance: ${dist} mile.\nCar: ${car}\ntraffic: ${traffic},\nso go to mall: ${go}`);
+
+        // ternary
+        go = dist < 2 ? true : car && (dist < 10 || !traffic) ? true : false;
+
+        console.log(`Distance: ${dist} mile.\nCar: ${car}\ntraffic: ${traffic},\nso go to mall: ${go}`);
+
+        /*
+        Scenarios for the above:
+
+            - If we have a car and the mall is less than 10 miles away, we go to the mall--even if the traffic is heavy. 
+            
+            - If we have a car and the mall is 10+ miles away, we go only if the traffic is NOT heavy. 
+
+            - If we have a car BUT the mall is, 10+ miles away AND the traffic is heavy, we don't go. 
+
+            - If we don't have a car, we don't go to the mall regardless of traffic conditions--unless the mall is within walking distance (see below). 
+
+            - If the mall is within walking distance (less than 2 miles), we will go to the mall, regardless of traffic conditions or whether or not we have a car. In other words, if mall is within walking distance, nothing else matters: we go.
+
+        Run it multiple times with different variable values, checking various scenarios where we go to the mall vs. we don't go to the mall.
+        */
+
+    </script>
+    
+</body>
+</html>

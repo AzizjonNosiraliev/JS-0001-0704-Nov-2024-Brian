@@ -1,0 +1,72 @@
+body {
+    background-color: #888;
+    /* background-image: url(../images/hacienda-main-bldg-640x350px.jpg); */
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-family: sans-serif;
+    color: #333;
+    margin: 0;
+}
+
+.container {
+    width: 250px;
+    margin: 30px auto; 
+    background-color: cornflowerblue; 
+    min-height: 200px; 
+    max-height: 300px; 
+    text-align: center; 
+    padding: 10px;
+    border-radius: 25px;
+    border: 5px solid blue;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+h1 {
+    font-size: 1.5em;
+    margin-bottom: 1em;
+}
+
+input, button {
+    font-size: 1.15em;
+    padding: 5px 15px;
+    /* display: block; */
+    margin: 1em auto;
+    width: 200px;
+    border-radius: 10px;
+}
+
+/* #username, #log-in {
+    width: 190px;
+} */
+/* #password {
+    width: 140px;
+} */
+/* .normal-eye {
+    width: 40px;
+    text-align: center;
+} */
+/* .red-eye {
+    width: 40px;
+    text-decoration: line-through;
+    text-decoration-color: red;
+    text-decoration-thickness: 3px;
+} */
+
+nav {
+    padding: 10px;
+    color: white;
+    background-color: cornflowerblue; 
+    ;
+    text-align: right;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-bottom: 5px solid blue;
+    letter-spacing: 2px;
+}
+
+nav li {
+    display: inline-block;
+    margin: 0 30px;
+}

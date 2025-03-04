@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Lab 04.03 - FINAL</title>
+
+    <link rel="stylesheet" href="../css/basic-pg-console.log.css">
+    
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Lesson 04.03 Lab - FINAL</h1>   
+        <h2>Array Methods</h2>
+        <h3>unshift(), shift(), splice(), slice(), join(),<br> 
+            includes(), indexOf(), join(), flat(), concat(),<br>
+            toUpperCase(), toLowerCase(), replace(), replaceAll()
+        </h3>
+
+        <h3>______________________</h3>
+
+        <h3>see console for output</h3>
+        <h3>switch script to FINAL for solution output</h3>
+
+    </div>
+
+    <script>
+
+        // 1. Make a pets array, containing 'cat', 'dog' and 'bunny'.
+        const pets = ['cat', 'dog', 'bunny'];
+        
+        console.log(pets); // ['cat', 'dog', 'bunnt']
+
+        // 2. Use an array method to add 'iguana' and 'parrot' to the end 
+        //    of the array.
+        pets.push('iguana', 'parrot');
+        
+        console.log(pets);
+        // ['cat', 'dog', 'bunny', 'iguana', 'parrot']
+
+        // 3. Use an array method to insert 'hamster' between 'dog' and 'bunny'.
+        pets.splice(2, 0, 'iguana');
+        
+        console.log(pets);
+        // ['cat', 'dog', 'hamster', 'bunny', 'iguana', 'parrot']
+
+        // 4. Use an array method to make 'snake' the first pet:
+        pets.unshift('snake');
+        
+        console.log(pets);
+        // ['snake', 'cat', 'dog', 'hamster', 'bunny', 'iguana', 'parrot']
+
+        // 5. Use an array method to put the pets in alphabetical order (A-Z):
+        pets.sort();
+        
+        console.log(pets);
+        // ['bunny', 'cat', 'dog', 'hamster', 'iguana', 'parrot', 'snake']
+
+        // 6. Use array methods to move the next to last pet to the 
+        //    beginning of pets. The next to last pet happens to be 'parrot'. 
+        //    Don't remove any pets or write any pet names:
+        let lastIndex = pets.length - 1;
+        let nextToLastItem = pets.splice(lastIndex - 1, 1);
+        pets.unshift(nextToLastItem);
+        
+        console.log(pets);
+        // ['parrot', 'bunny', 'cat', 'dog', 'hamster', 'iguana', 'snake']
+
+        // 7. The dog and cat don't like being next to each other, 
+        // but they both like the bunny, so put the bunny between them. 
+        // Don't remove any pets or write any pet names:
+        let secondPet = pets.splice(1,1);
+        pets.splice(2, 0, secondPet);
+
+        console.log(pets);
+        // ['parrot', 'cat', 'bunny', 'dog', 'hamster', 'iguana', 'snake']
+
+        // 8. Given pets2, combine both arrays into a new array called petShopArr, 
+        //    and then alphabetize petShopArr:
+        const pets2 = ['canary', 'turtle', 'gerbil', 'tarantula', 'goldfish'];
+        const petShopArr = pets.concat(pets2);
+        petShopArr.sort();
+
+        console.log('petShopArr:', petShopArr);
+        // petShop: ['bunny', 'parrot', 'canary', 'cat', 'dog', 'gerbil', 'goldfish', 'hamster', 'iguana', 'snake', 'tarantula', 'turtle']
+
+        // 9. Make a string called petsShopStr, consisting of all 
+        //    the pets in petShopArr, with the pets separated by ' & ':
+        let petsShopStr = petShopArr.join(' & ');
+
+        console.log(petsShopStr);
+        // canary & cat & dog & gerbil .. etc.
+
+        // 10. Use two array methods to get the index of the dog (4). 
+        //     HINT: You need to make a new array.
+        const nestedPets = [ 
+            ['bunny', 'parrot', 'canary'], 
+            ['cat', 'dog', 'gerbil'], 
+            ['goldfish', 'hamster', 'iguana'], 
+            ['snake', 'tarantula', 'turtle']
+        ];
+
+        const flatPets = nestedPets.flat();
+        let dogIndex = flatPets.indexOf('dog');
+        console.log("index of dog:", dogIndex);
+
+        // BONUS 1: The cat has hacked the "database", and changed 
+        // "cat" to "cats rule" and "dog" to "dogs drool"
+        // Log the result as evidence of the cat's crime.
+
+        // BONUS 2: Use a loop to make the "cat" / "dog" changes.
+    </script>
+    
+</body>
+
+</html>

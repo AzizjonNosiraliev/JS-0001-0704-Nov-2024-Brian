@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 02.04</title>
+    <link href="../css/basic-pg-console.log.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div>
+            <h1>JS Lab 02.04 <br>Date Object</h1>   
+            <h3>See script tag in this html file for lab assignment.</h3>
+            <h3>As you work, check the console for output and <span style="color:red">red error messages</span>. 
+            <h3>Please check Lab Solution file only after giving the Lab your best effort!</h3>
+        </div>
+
+        <br>
+        <h1 id="greeting" style="color:coral"></h1>
+        <a href="#" style="font-size: 1.5rem; font-weight:bold;"></a>
+
+    </div>
+    
+    <script>
+
+        // 02.04 LAB
+
+        // 1. Continuing with the "timely greeting", adjust the logic so that:
+        //    - if the time is 6:00 pm - 10:59 pm, greeting is "Good Evening"
+        //    - if the time is 11:00 pm - 3:59 am, greeting is "Hey, Night Owl!"
+        //    - if the time is 4:00 pm - 11:59 am, greeting is "Good Morning!"
+        //    - if the time is 12:00 - 5:59 pm, greeting is "Good Afternoon!"
+        //    - all other greeting times are unchanged
+        let dt = new Date();
+        let hr = dt.getHours();
+        let greeting = 'Good ';
+
+        // get the DOM elems: greeting, a tag, img tag, date tag
+        const greetingTag = document.getElementById('greeting');
+        const aTag = document.querySelector('a');
+        const cupImg = document.querySelector('img');
+        const todaysDateH2 = document.getElementById("todays-date");
+        todaysDateH2.textContent = todaysLongDate;
+
+        
+        if(hr < 4) {
+            greeting = "Hey, Night Owl!";
+            aTag.href = nightOwlURL;
+            aTag.text = "Night Owl Activities";
+        } else if(hr < 12) {
+            greeting = "Good Morning!";
+            aTag.href = morningURL;
+            aTag.text = "Morning Activities";
+        } else if(hr < 18) {
+            greeting = "Good Afternoon!";
+            aTag.href = afternoonURL;
+            aTag.text = "Afternoon Activities";
+        } else if(hr < 22) {
+            greeting = "Good Evening!";
+            aTag.href = eveningURL;
+            aTag.text = "Evening Activities";
+        } else { // hr is 23 (11:00-11:59pm)
+            greeting = "Hey, Night Owl!";
+            aTag.href = nightOwlURL;
+            aTag.text = "Night Owl Activities";
+        }
+
+        // Output the greeting to the tag on the web page with an id="greeting"
+
+      
+        // 2. Make a "Activityies" link for each greeting
+        //    Each activity should link to the provided URL 
+        //    The a-tag is already on the thml page
+        //    Set the href and the text for the a-tag in the same 
+        //    if-else block that makes the greeting
+
+        //   - If the greeting is "Hey, Night Owl!", the link should say:
+        //     "Night Owl Activities" and should link to:
+        //     https://newyorksimply.com/nyc-things-to-do-in-new-york-city-at-night
+
+        //   - If the greeting is "Good Morning!", the link should say:
+        //     "Morning Activities" and should link to:
+        //     https://nymag.com/guides/everything/early-morning-2014-1/
+        //   
+        //   - If the greeting is "Good Afternoon!", the link should say:
+        //     "Afternoon Activities" and should link to:
+        //     https://www.theinfatuation.com/new-york/guides/best-afternoon-tea-nyc
+
+        //   - If the greeting is "Good Evening!", the link should say:
+        //     "Evening Activities" and should link to:
+        //     https://websterhall.com/shows/
+
+
+        let nightOwlURL = "https://newyorksimply.com/nyc-things-to-do-in-new-york-city-at-night";
+        let morningURL = "https://nymag.com/guides/everything/early-morning-2014-1/";
+        let afternoonURL = "https://www.theinfatuation.com/new-york/guides/best-afternoon-tea-nyc";
+        let eveningURL = "https://websterhall.com/shows/";
+
+
+        // Output todaysLongDate to the h2 of id="todays-date"
+        
+        cupImg.src = 'images/' + cupPic;
+
+        // hr = 1; // testing hr
+
+        // Test the output by hard-coding hr values. 
+        // Sample hr values and their expected output:
+        //   - When hr = 0, greeting is "Good Evening!"
+        //   - When hr = 3, greeting is "Hey, Night Owl!"
+        //   - When hr = 5, greeting is "Good Morning!"
+        //   - When hr = 15, greeting is "Good Afternoon!"
+        //   - When hr = 20, greeting is "Good Evening!"
+
+
+        console.log(greeting);
+        greetingTag.textContent = greeting;
+
+        // Output the correct activities link (set href from timelyActivitiesLinks array)
+        // aTag = document.querySelector('a');
+        // aTag.href = linkHref;
+        // aTag.style.fontWeight = "bold";
+        // aTag.style.fontSize = "21px";
+        // aTag.textContent = greetingStr + " Activities";
+        // let imgTag = document.querySelector('img');
+
+        // 3. Go into the "timely greeting logic" and output the correct image:
+        h = dt.getHours(); // get a fresh hour cuz 12 may have been subtracted
+        // h = 0;
+        if(h == 0) { // 12:00 midnight to 12:59 -- still considered evening
+          imgTag.src = "images/good-evening-coffee-cup.jpg";
+        } else if(h >= 1 && h <= 4) { // 1:00 - 4:59 am (night owl time)
+          imgTag.src = "images/good-evening-coffee-cup.jpg"; 
+        } else if(h < 12) { // 5:00 - 11:59 am (good morning time)
+          imgTag.src = "images/good-morning-coffee-cup.jpg";
+        } else if(h < 18) { // 12:00 noon to 5:59 pm (good afternoon time)
+          imgTag.src = "images/good-afternoon-coffee-cup.jpg";
+        } else { // 6:00 pm - 11:59 pm (good evening time)
+          imgTag.src = "images/good-evening-coffee-cup.jpg";
+        }
+        // BONUS: Include Night Owl (Midnight - 4:00am) in addition to Morning, Afternoon, Evening
+
+    </script>
+    
+</body>
+</html>

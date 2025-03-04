@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">˜
+    
+    <title>Lesson 07.06 Login Form Processor</title>
+
+    <link rel="stylesheet" href="css/basic-pg-console.log.css">
+    <link rel="stylesheet" href="css/login-form.css">
+
+    <style>
+        /* hide back btn on pg load -- only make it appear
+        if log in failed */
+        button {
+            display: none;
+            cursor: pointer;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <nav>
+        <ul>
+            <li style="float:left">Lesson 07.06</li>
+            <li>About</li>
+            <li>Activities</li>
+            <li>Join</li>
+            <li>Log In</li>
+        </ul>
+    </nav>
+
+    <div class="container">
+
+        <h1>Login Form Processor</h1>
+        <h2>Welcome USER</h2>
+
+        <button><< Try Again</button>
+
+    </div>
+
+    <script>
+        // declare username and password; we do not
+        // have a database to query, so we emulate:
+        const USER = 'amy';
+        const PSWD = 'abc';
+        const outputH2 = document.querySelector('h2');
+        // get the button which emulates browser back btn
+        const backBtn = document.querySelector('button');
+        // have the back button take you back to prev pg
+        backBtn.onclick = function() {
+            window.history.back();
+        }
+        // get the sessionStorage var values
+        // these were set on the form page
+        // let user = sessionStorage.getItem('user');
+        // let pswd = sessionStorage.getItem('pswd');
+
+        // if(user == USER && pswd == PSWD) {
+        //     outputH2.textContent = `Welcome, ${user}!`;
+        // } else { // else output "Login Failed":
+        //     outputH2.textContent = "Login Failed!";
+        //     backBtn.style.display = "inline-block";
+        // }
+
+        // another way to get the user name and pswd is to get them off the
+        // querystring (url in the address bar) -- this would be an alternative
+        // to using sessionVariables, but the form must be set to method="GET"
+        // for this to be possible, cuz the vars must be visible in the url
+        let querystring = window.location.search;
+        console.log("querystring:", querystring); // ?username=amy&password=abc
+        // parse the username and password into actual name-value pairs
+        // get rid of the ? by using one of two methods: string slice() or string replace()
+        let querystr = querystring.replace('?','');
+        // console.log("querystr:", querystr); // username=amy&password=abc
+        // replace the TWO = w spaces (user replaceAll to get ALL occurrences)
+        querystr = querystr.replaceAll('=', ' ');
+        // replace the & w space
+        querystr = querystr.replace('&', ' ');
+        console.log("querystr:", querystr); // username amy password abc
+        // split() method is called on a string and returns an array
+        // in our case we want to split on the space to get array of 4 words
+        // the delimiter argument specifies the char(s) where you want to split
+        const querystrArr = querystr.split(" "); // split(delimiter)
+        console.log("querystrArr:", querystrArr); // ['username', 'amy', 'password', 'abc']
+        let username = querystrArr[1];
+        let password = querystrArr[3];
+        console.log("username from querystring:", username);
+        console.log("password from querystring:", password);
+
+        if(username == USER && password == PSWD) {
+            outputH2.textContent = `Welcome, ${username}!`;
+        } else { // else output "Login Failed":
+            outputH2.textContent = "Login Failed!";
+            backBtn.style.display = "inline-block"; // show the back btn ("Try Again")
+        }
+
+    </script>
+    
+</body>
+</html>

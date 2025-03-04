@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>06.06 Sortable Movies</title>
+
+    <link href="css/basic-pg-console.log.css" rel="stylesheet">
+
+    <link href="css/sortable-movies.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Lesson 06.06 - Sortable Movies</h1>
+        <!-- MENU MADE IN JS -->
+
+        <!-- <select id="genre-menu">
+            <option value="choose">Genre..</option>
+            <option value="action" >Action</option>
+            <option value="adventure" >Adventure</option>
+            <option value="biography" >Biography</option>
+            <option value="adventure">Adventure</option>
+            <option value="comedy">Comedy</option>
+            <option value="crime">Crime</option>
+            <option value="drama">Drama</option>
+            <option value="family">family</option>
+            <option value="fantasy">Fantasy</option>
+            <option value="film-noir">Film-Noir</option>
+            <option value="history">History</option>
+            <option value="horror">Horror</option>
+            <option value="musical">Musical</option>
+            <option value="mystery">Mystery</option>
+            <option value="romance">Romance</option>
+            <option value="sci-fi">Sci-Fi</option>
+            <option value="thriller">Thriller</option>
+            <option value="war">War</option>
+        </select> -->
+
+        <select id="sort-menu">
+            <option value="choose">Sort by..</option>
+            <option value="name" >Name</option>
+            <option value="year">Year</option>
+            <option value="mins">Duration</option>
+            <option value="tomatoes">Rotten Tomatoes</option>
+            <option value="won">Oscars Won</option>
+            <option value="nominated">Oscars Nominated</option>
+        </select>
+
+        <input type="checkbox" id="cb" value="desc">
+        <label for="cb">Descending</label>
+
+        <div class="movie-holder"></div>
+
+    </div>
+
+    <script src="js/movies.js"></script>
+    <!-- START .js -->
+    <!-- <script src="js/06.06-Sortable-Movies-START.js"></script> -->
+
+    <!-- PROG .js -->
+    <script src="js/06.06-Sortable-Movies-PROG.js"></script>
+
+    <!-- PROG-REFACTORED .js -->
+    <!-- <script src="js/06.06-Sortable-Movies-PROG-REFACTORED.js"></script> -->
+
+    <!-- FINAL .js -->
+    <!-- <script src="js/06.06-Sortable-Movies-FINAL.js"></script> -->
+    
+</body>
+
+</html>

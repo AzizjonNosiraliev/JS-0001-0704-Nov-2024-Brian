@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Lab 03.01</title>
+    
+	<style>
+        body {
+            background-color: #123;
+            margin: 2rem;
+        }
+
+        .boxy {
+            width: 320px;
+            height: 550px;
+            margin: 24px auto;
+            padding: 24px;
+            background-color: #ABC;
+            color: #123;
+            font-family: sans-serif;
+            font-weight: bold;
+            border-radius: 15px;
+            border: 5px solid #88A;
+            text-align: center;
+        }
+
+        input {
+            display: inline-block;
+            font-size: 2rem;
+            text-align: center;
+            background-color: lightyellow;
+            border: 3px solid orange;
+            color: darkorange;
+            padding: 5px 10px;
+            border-radius: 1rem;
+            margin: 1rem auto 1.5rem;
+            width: 90%;
+        }
+
+        button {
+            width: 50px;
+            height: 50px;
+            border-radius: 5px;
+            background-color: orange;
+            color: azure;
+            font-weight: bold;
+            font-size: 1rem;
+            margin: 0.25rem;
+            box-shadow: 5px 5px 5px #888;
+            cursor: pointer;
+        }
+
+        h3, h4 {
+            text-align: center;
+            color: white;
+            /* font-size: 1.25rem; */
+            font-family: sans-serif;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <h3>Coding Challenge: Make the calculator work!</h3>
+    <h4>It should be able to add, subtract, multiply, divide. 
+    do exponents and find modulus of any 2 inputted numbers</h4>
+
+    <div class="boxy">
+
+        <h1>Lab 03.02</h1>
+        <h2>JavaScript Bare-Bones Calculator</h2>
+        <h3>(Can only do math with 2 numbers)</h3>
+    
+         <!-- Calculator Input Box -->
+		<input type=”number” class=”numBox”>
+
+        <!-- Calculator Number Buttons -->
+        <button id="1">1</button> <!-- 1 -->
+        <button id="2">2</button> <!-- 2 -->
+        <button id="3">3</button> <!-- 3 -->
+        <button id="4">4</button> <!-- 4 -->
+        <button id="5">5</button> <!-- 5 -->
+        <button id="6">6</button> <!-- 6 -->
+        <button id="7">7</button> <!-- 7 -->
+        <button id="8">8</button> <!-- 8 -->
+        <button id="9">9</button> <!-- 9 -->
+        <button id="0">0</button> <!-- 0 -->
+
+        <!-- Calculator Math Operator Buttons -->
+        <button id="add">+</button> <!-- addition -->
+        <button id="subtract">-</button> <!-- subtraction -->
+        <button id="multiply">x</button> <!-- multiplication -->
+        <button id="divide">&divide;</button> <!-- division -->
+        <button id="exponent">^</button> <!-- exponentiation -->
+        <button id="modulus">Mod</button> <!-- modulus -->
+        <button id="calculate">=</button>
+        <button id="clear">Clr</button>
+	</div>
+
+    <script>
+
+    </script>
+    
+</body>
+
+</html>

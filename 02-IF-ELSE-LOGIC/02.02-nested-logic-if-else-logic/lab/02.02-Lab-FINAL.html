@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Lab 02.02</title>
+    
+    <link href="../css/basic-pg-console.log.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div>
+            <h1>JS Lab 02.02 <br> Nested Logic <br>truthy falsey<br>variable scope</h1>   
+            <h3>See script tag in this html file for lab assignment.</h3>   
+            <h3>As you work, check the console for output and <span style="color:red">red error messages</span>. 
+            <h3>Please check Lab Solution file only after giving the Lab your best effort!</h3>
+        </div>
+
+    </div>
+    
+    <script>
+
+        // Lab 02.02 - Instructions:  
+        
+
+        // 1. Write a nested if-else block, that satisfies the following conditions:
+        
+        // - If the student score is greater than or equal to 90, if the student is in high school, they get a grade of "A", but if they are in college they get a grade of "4".
+
+        // - Else If the student score is greater than or equal to 80 and less than 90, if the student is in high school, they get a grade of "B", but if they are in college they get a grade of 3.
+
+        // - Else If the student score is greater than or equal to 70 and less than 80, if the student is in high school, they get a grade of "C", but if they are in college they get a grade of 2.
+
+        // - Else If the student score is greater than or equal to 65 and less than 70, if the student is in high school, they get a grade of "D", but if they are in college they get a grade of 1.
+
+        // - Else the grade is "FAIL" for both high school and college.
+        
+        let score = 94;
+        let inHS = false;
+        let grade;
+        if(score >= 90) {
+            if (inHS) {
+                grade = "A";
+            } else {
+                grade = "4";
+            }
+        } else if (score >= 80) {
+            if (inHS) {
+                grade = "B";
+            } else {
+                grade = "3";
+            }
+        } else if (score >= 70) {
+            if (inHS) {
+                grade = "C";
+            } else {
+                grade = "2";
+            }
+        } else if (score >= 65) {
+            if (inHS) {
+                grade = "D";
+            } else {
+                grade = "1";
+            }
+        } else {
+            grade = "FAIL";
+        }
+        console.log(grade);
+
+        // 2. Write a nested if-else block, that calculates the price of a pet, based on the following conditions:
+        
+        // - If the pet is a cat, increase the pet price by 20%, unless it is a kitten (baby cat), in which case decrease the price by 10%.
+         // - If the pet is a dog, increase the pet price by 30%, unless it is a puppy (baby dog), in which case decrease the price by 15%.
+        // - If the pet is anything besides a dog or a cat, double the price, unless it is a baby version of the pet, in which case cut the price in half.
+
+        let pet = "bunny";
+        let price = 100;
+        let baby = true;
+        if (pet == "cat") {
+            if (baby) { // kitten
+                price *= 0.9;
+            } else {
+                price *= 1.2;
+            }
+        }
+        // - If the pet is a dog, increase the pet price by 30%, unless it is a puppy (baby dog), in which case decrease the price by 15%.
+        else if (pet == "dog") {
+            if (baby) { // puppy
+                price *= .85;
+            } else { 
+                price *= 1.3;
+            }
+        }
+        // - If the pet is anything besides a dog or a cat, double the price, unless it is a baby version of the pet, in which case cut the price in half.
+        else { // not cat or dog -- but maybe bunny..?
+            if (baby) { // some baby pet
+                price *= 0.5;
+            } else { 
+                price *= 2;
+            }
+        }
+
+        console.log("Pet Price:", price);
+
+        
+        
+    </script>
+    
+</body>
+</html>

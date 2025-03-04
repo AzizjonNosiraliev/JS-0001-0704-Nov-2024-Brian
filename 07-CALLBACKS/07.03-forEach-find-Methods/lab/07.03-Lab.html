@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>07.03 Lab</title>
+
+    <style>
+
+        body { 
+            background-color: #555;
+            color: #555;
+            font-family: sans-serif;
+            text-align: center;
+        }
+
+        .container {
+            margin: 50px auto;
+            padding: 30px;
+            border-radius: 10px;
+            border: 3px solid #999;
+            width: 650px;
+            height: 65vh;
+            background-color: #ccc;
+        }
+
+        img {
+            width: 90px; 
+            float:left; 
+            padding-right:30px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div>
+            <h1>JS Lab Solution 07.03 <br>forEach <br>vs. map-filter chaining
+                <br>refactoring if-else with ternary</h1>   
+    
+            <h3>Please check your Lab work against this Solution file 
+            <br>only after having given the Lab your best effort!</h3>
+        </div>
+
+    </div>
+    
+    <script>
+
+        const letterValuesObj = {
+            "A": 1, "B": 3, "C": 3, "D": 2, "E": 1, "F": 4, "G": 2, "H": 4, "I": 1,
+            "J": 8,"K": 5, "L": 1, "M": 3, "N": 1, "O": 1, "P": 3, "Q": 10, "R": 1, 
+            "S": 1, "T": 1, "U": 1, "V": 4, "W": 4, "X": 8, "Y": 4, "Z": 10
+        };
+        
+        const froots = ['apple', 'apricot', 'banana', 'blueberry', 'cherry', 'cranberry', 
+        'grape', 'kiwi', 'lemon', 'lime', 'mango', 'orange', 'papaya', 'peach', 'pear', 
+        'pineapple', 'plum', 'raspberry', 'strawberry', 'tangerine', 'watermelon'];
+
+        const vowels = 'aeiou';
+
+        // From froots, make fruitsObjArr, where each item is an object w 4 properties.
+        /* { fruit: 'apple', 
+             startsWithVowel: true,
+             scrabbleScore: 9, 
+             treat: 'apple jelly' }, */
+
+        // scrabbleScore: this number is the sum of the value of each letter as found in the letterValuesObj object
+        // treat: this is a fruit jelly, jam, popsicle, jellybean or roll-up made according to the following rules:
+        //  - if the fruit is a 'berry' make 'jam' ('blueberry jam')
+        //  - if the fruit starts with 'p', make 'popsicle' ('peach popsicle')
+        // - if the fruit has less than 6 letters, make 'jelly'
+        // - if the fruit has more than 9 letters, make 'jellybean'
+        // - else make 'roll-up'
+        // only ONE treat per fruit, so it's 'blueberry jam' not 'blueberry jellybean' (edited) 
+
+        const fruitsObjArr = froots.map(e => ({ fruit: e,
+            startsWithVowel: vowels.includes(e[0]) ? true : false,
+            scrabbleScore: e.split('').reduce((s,L) => s += letterValuesObj[L.toUpperCase()], 0),
+            treat: e.includes('berry') ? `${e} jam` : e[0] == 'p' ? `${e} popsicle` : 
+            e.length < 6 ? `${e} jelly` : e.length > 9 ? `${e} jellybean` : `${e} roll-up` }) 
+        );
+
+        console.log('fruitsObjArr:', fruitsObjArr);
+
+        // forEach
+
+        // 1. Given nums array, cube the even numbers and square the odds:
+    
+        const nums = [4, 3, 14, 5, 7, 9, 8, 6, 17, 10, 12, 15];
+
+        const numz = nums.map(e => e % 1 == 0 ? e ** 3 : e * 2);
+
+        console.log('numz:', numz);
+
+
+        // filter-map-chaining vs. forEach
+
+        // 4. Given this array of fruits, use filter-into-map chaining to 
+        // make jellybeans of fruits with 5 or fewer letters
+        // expected output: 'apple jellybean', 'grape jellybean', 'kiwi jellybean', etc.
+        const fruits = ['apple', 'apricot', 'banana', 'blueberry', 
+        'cherry', 'grape', 'kiwi', 'lime', 'lemon', 'mango', 
+        'orange', 'pineapple', 'strawberry'];
+
+        // 5. Do another filter-into-map chaining to 
+        // make rollups of fruits that begin with a consonant (so, no 'apple', 'apricot' or 'orange')
+
+        // 6. Use forEach with conditional logic to make the jellybeans or rollups
+        // subject to the same conditions: 
+        // - 5 or fewer letters for jellybeans, 
+        // - can't start with a vowel for roll-ups
+        // HINT: 
+        // start with two new empty arrays, one for each category of output
+
+        // find() and findIndex() methods
+
+        // 7. Use the find() method to find the first animal that starts with a vowel. 
+        const animals = ['bunny', 'cat', 'dog', 'elephant', 'frog', 'giraffe', 'hedgehog', 'iguana', 'lynx', 'manatee'];
+
+        // 8. Use the findIndex() method to find the index of the first animal that *ends* in a vowel.
+
+        // 9. Use find() to find the last number that is double the number before it:
+        // HINT: Use all three available callback arguments: e, i and a. 
+        // a[i+1] is the next item. if a[i+1] / 2 equals e, the current item, it is is doubled
+        // and so, the current item is not the last double, 
+        // BUT if the a[i+1] / 2 does NOT equal e, then the current item IS the "last "double"
+        // The answer is 32, since that is the last double
+        const digits = [8, 16, 32, 75, 100, 256];
+
+        // 10. Use findIndex() to find the index of the first number whose square root is an integer.  
+        
+    </script>
+
+</body>
+</html>

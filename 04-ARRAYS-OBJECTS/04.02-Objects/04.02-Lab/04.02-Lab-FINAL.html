@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Lab 04.02 Solution</title>
+    
+	<style>
+    
+        body { 
+            background-color: #555;
+            color: #555;
+            font-family: sans-serif;
+            text-align: center;
+        }
+
+        .container {
+            margin: 50px auto;
+            padding: 30px;
+            border-radius: 10px;
+            border: 3px solid #999;
+            width: 650px;
+            height: 65vh;
+            background-color: #ccc;
+        }
+
+        img {
+            width: 90px; 
+            float:left; 
+            padding-right:30px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Lab 04.02</h1>
+        <h2>Making an Object with Properties and a Method</h2>
+
+    </div>
+    
+    <script>
+
+        // 04.02 Lab
+
+        /* 
+        1. Make an object variable called product. 
+                In the object variable declaration, include the 
+                following properties of indicated key and datatype
+                For the values, refer to the method's return value
+
+            product object's properties: key (datatype)
+                - prodName (string)
+                - patentNum (number)
+                - assemblyRequired (boolean)
+                - buzzwords (array with 3 items)
+                - company (object with 2 properties: name, country)
+                - promote (method) the returns a string concatenated
+                from ALL the other properties and array items:
+                promote method returns:
+                "Announcing Doo-Dad Inc.'s newest high-tech, labor-saving, 
+                water-resistant Wonder Widget! Made in U.S.A. Patent number: 7654321.
+                Some assembly required."
+                HINT: Use if-else logic in the method to concatnate or not based on the boolean
+        */
+
+        const product = {
+            prodName: "Wonder Widget",
+            patentNum: 7654321,
+            assemblyRequired: true,
+            buzzwords: ['high-tech', 'labor-saving', 'water-resistant'],
+            company: {name: 'Doo-Dad Inc.', country: 'U.S.A'},
+            promote: function() {
+                let assembled;
+                if(this.assemblyRequired) {
+                    assembled = 'Some assembly required';
+                } else {
+                    assembled = '';
+                }
+                return `Announcing ${this.company.name}'s newest ${this.buzzwords[0]}, ${this.buzzwords[1]}, ${this.buzzwords[2]} ${this.prodName}! Made in ${this.company.country}. Patent number: ${this.patentNum}. ${assembled}`;
+            }
+        };
+
+        /*
+        2. Log the following properties of the object:
+                - the whole object
+                - the boolean, including with it the label "Assembly Required:"
+                - the first item in the buzzwords array
+                - the last item in buzzwords, accessed via the array length
+                - the company name and country as: "All Doo-Dad, Inc. products are made in U.S.A."
+                - the promote method: 
+                Get Doo-Dad Inc.'s new high-tech, labor-saving, water-resistant Wonder Widget! 
+                Made in U.S.A. Patent number: 7654321. Some assembly required.
+        */
+
+        console.log(product); // {} (click arrow to open and see all properties)
+        console.log("Assembly Required:", product.assemblyRequired); // Assembly Required: true
+        console.log(product.buzzwords[0]); // high-tech
+        console.log(product.buzzwords[product.buzzwords.length-1]); // water-resistant
+        console.log(`All ${product.company.name} products are made in ${product.company.country}`); // All Doo-Dad, Inc. products are made in U.S.A.
+        console.log(product.promote()); // Get Doo-Dad Inc.'s new high-tech, labor-saving, water-resistant Wonder Widget! 
+        // Made in U.S.A. Patent number: 7654321. Some assembly required.
+
+        /*
+        3. Add four new properties outside of the object. In other words, do not add
+        these new properites directly into the object declaration:
+            - msrp (number) -- MSRP (Manufacturer's Suggested Retail Price)
+            - discount (number) -- as decimal: .2 means 20%
+            - salePrice (result of math done with mspr and discount)
+            - caution (string)
+        */
+
+        product.msrp = 40;
+        product.discount = 0.2;
+        product.salePrice = product.msrp * (1 - product.discount); // 32
+        product.caution = "Water-resistant does NOT mean waterproof. Do not submerge";
+        product.promote = function() {
+                let assembled;
+                if(this.assemblyRequired) {
+                    assembled = 'Some assembly required';
+                } else {
+                    assembled = '';
+                }
+                return `Announcing ${this.company.name}'s newest ${this.buzzwords[0]}, 
+                ${this.buzzwords[1]}, ${this.buzzwords[2]} ${this.prodName}! 
+                Made in ${this.company.country}. Patent number: ${this.patentNum}. 
+                ${assembled}
+                *** MSRP: $${this.msrp} *** ON SALE! ${this.discount * 100}% OFF *** NOW ONLY: $${this.salePrice} ***
+                (CAUTION: ${this.caution})`;
+            }
+
+            console.log(product.promote());
+
+        /*
+        4. Update the promote method to include the new properties. 
+           - do not edit the original object method
+             HINT: product.promote = function()
+           - The promote method's updated return value should be:
+                "Get Doo-Dad Inc.'s new high-tech, labor-saving, water-resistant Wonder Widget! Made in U.S.A. 
+                Made in U.S.A. Patent number: 7654321. Some assembly required.
+                *** MSRP: $40 *** ON SALE! 20% OFF *** NOW ONLY: $32 ***
+                (CAUTION: Water-resistant does NOT mean waterproof. Do not submerge.)"
+            - log the promote method to see the changes.
+        */
+
+        // Get Doo-Dad Inc.'s new high-tech, labor-saving, water-resistant Wonder Widget! 
+        // Made in U.S.A. Patent number: 7654321. Some assembly required.
+        // *** MSRP: $40 *** ON SALE! $20% OFF *** NOW ONLY: $32;
+
+        /*
+        5. Update / change properties and log the whole object and the method again:
+            - flip the boolean to false
+            - increase the MSRP to $75
+            - increase the discount to 50%
+            - push another buzzword into the array: "shock-resistant"
+            - update the promote method to include the new array item
+            - log the promote method to see the changes.
+        */
+
+        product.assemblyRequired = false;
+        product.msrp = 75;
+        product.discount = 0.5;
+        product.buzzwords.push('shock-resistant');
+
+        product.promote = function() {
+                let assembled;
+                if(this.assemblyRequired) {
+                    assembled = 'Some assembly required';
+                } else {
+                    assembled = '';
+                }
+                return `Announcing ${this.company.name}'s newest ${this.buzzwords[0]}, 
+                ${this.buzzwords[1]}, ${this.buzzwords[2]}, ${this.buzzwords[3]} ${this.prodName}! 
+                Made in ${this.company.country}. Patent number: ${this.patentNum}. 
+                ${assembled}
+                *** MSRP: $${this.msrp} *** ON SALE! ${this.discount * 100}% OFF *** NOW ONLY: $${this.salePrice} ***
+                (CAUTION: ${this.caution})`;
+            }
+
+        console.log(product.promote());
+        // Get Doo-Dad Inc.'s new high-tech, labor-saving, water-resistant, shock-resistant Wonder Widget! 
+        // Made in U.S.A. Patent number: 7654321. Some assembly required.
+        // *** MSRP: $75 *** ON SALE! $50% OFF *** NOW ONLY: $37.50;
+
+    </script>
+    
+</body>
+
+</html>

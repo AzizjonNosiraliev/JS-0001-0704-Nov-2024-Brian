@@ -1,0 +1,120 @@
+body { 
+    background-color: #555;
+    color: #555;
+    font-family: sans-serif;
+    text-align: center;
+}
+
+.container {
+    margin: 30px auto 0 auto;
+    padding: 30px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border: 3px solid #999;
+    width: 600px;
+    height: 670px;
+    background-color: #ccc;
+    /* make X's and O's unselectable (can't type in box) */
+    -moz-user-select: -moz-none;
+    -html-user-select: none;
+    -webkit-user-select: none;
+}
+
+.board3 {
+    display: grid;
+    grid-template-columns: repeat(3, 200px);
+    column-gap: 0px;
+
+}
+
+.board5 {
+    display: grid;
+    grid-template-columns: repeat(5, 110px);
+    column-gap: 9px;
+}
+
+.sq3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 7rem;
+    font-weight: bold;
+    height: 160px;
+    margin: 10px;
+    background-color: #ddd;
+    border: 2px solid #888;
+    border-radius: 10px;
+    width: 90%;
+    text-align: center;
+    color: #555;
+    cursor: pointer;
+}
+
+.sq5 {
+    height: 95px;
+    width: 90%;
+}
+
+.sq:hover {
+    background-color: #eee;
+}
+
+.sq5 {
+    width: 
+}
+
+.btn {
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    width: 670px;
+    height: 70px;
+    padding: 20px 30px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    margin-top: 0px;
+    cursor: pointer;
+    background-color: #aaa;
+    color: #555;
+    letter-spacing: 5px;
+}
+
+.btn:hover {
+    background-color: #ddd;
+}
+
+.winner {
+    background-color: forestgreen;
+    color: #00FF00;
+}
+
+h1 {
+    display: inline-block;
+    text-align:left; 
+    float: left;
+    margin: 10px 17px;
+}
+
+h2 {
+    clear: both;
+    display: block;
+    text-align: left;
+    margin: 10px 17px;
+}
+
+span {
+    font-size: 1.75rem;
+    color:forestgreen; 
+    float:right;
+    font-weight: bold;
+    margin-top: 13px;
+    margin-right: 14px;
+}
+
+input[type="checkbox"] {
+    width: 25px;
+    height: 25px;
+}

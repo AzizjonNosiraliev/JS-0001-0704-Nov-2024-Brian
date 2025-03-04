@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>07.03 Lab</title>
+
+    <style>
+
+        
+        body { 
+            background-color: #555;
+            color: #555;
+            font-family: sans-serif;
+            text-align: center;
+        }
+
+        .container {
+            margin: 50px auto;
+            padding: 30px;
+            border-radius: 10px;
+            border: 3px solid #999;
+            width: 650px;
+            height: 65vh;
+            background-color: #ccc;
+        }
+
+        img {
+            width: 90px; 
+            float:left; 
+            padding-right:30px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div>
+            <!-- <img src="../../../images/lab-testtube.jpg"> -->
+            <h1>JS Lab Solution 07.03 <br>forEach <br>vs. map-filter chaining
+                <br>refactoring if-else with ternary</h1>   
+    
+            <h3>Please check your Lab work against this Solution file 
+            <br>only after having given the Lab your best effort!</h3>
+        </div>
+
+    </div>
+    
+    <script>
+
+        // forEach
+
+        // 1. Given an array of numbers, use forEach to cube the integers while doubling the floats.
+        // Log each result to the console.
+        // HINT: 
+        // If rounding off the number does not change its value, it's an integer
+        const nums = [4, 3.14, 5, 7.98, 6, 17.75, 7, 55.55];
+
+        nums.forEach(e => {
+            if(Math.round(e) == e) { 
+                console.log(e ** 3); // cube the int
+            } else {
+                console.log(e * 2); // double the float
+            }
+        });
+
+        // 2. Refactor the above by making a new array of the answers, 
+        // rather than console.logging them. Then log the resulting array.
+        // HINT: you need to declare a new, empty array above the forEach
+        const numeros = [];
+
+        nums.forEach(e => {
+            if(Math.round(e) == e) { 
+                numeros.push(e ** 3);
+            } else {
+                numeros.push(e * 2);
+            }
+        });
+
+        // 3. Refactor the above using a ternary instead of an if-else:
+        // Solution Explained: 
+        // A ternary is one line, so the arrow function syntax can be very concise
+        // In fact, the entire forEach can be written in one line on code.
+        const numz = [];
+
+        nums.forEach(e => Math.round(e) == e ? numz.push(e ** 3) : numz.push(e * 2));
+
+        console.log(numz);
+
+        // filter-map-chaining vs. forEach
+
+        // 4. Given this array of fruits, use filter-into-map chaining to 
+        // make jellybeans of fruits with 5 or fewer letters
+        // expected output: 'apple jellybean', 'grape jellybean', 'kiwi jellybean', etc.
+        const fruits = ['apple', 'apricot', 'banana', 'blueberry', 'cherry', 'grape', 'kiwi', 'lime', 'lemon', 'mango', 'orange', 'pineapple', 'strawberry'];
+
+        const jellybeans = fruits.filter(e => e.length < 6).map(e => e + ' jellybean');
+
+        // 5. Do another filter-into-map chaining to 
+        // make rollups of fruits that begin with a consonant 
+        // (so, no 'apple', 'apricot' or 'orange', which begin with a vowel)
+        const rollups = fruits.filter(e => !'aeiou'.includes(e[0])).map(e => e + ' roll-up');
+
+        // 6. Use forEach with conditional logic to make the jellybeans or rollups
+        // subject to the same conditions: 5 or fewer letters for jellybeans, 
+        // can't start with a vowel for roll-ups
+        const jellyBeans = [];
+        const rollUps = [];
+
+        fruits.forEach(e => {
+            if(e.length < 6) {
+                jellyBeans.push(e + ' jellybean');
+            } else if(!'aeiou'.includes(e[0])) {
+                rollUps.push(e + ' roll-up');
+            }
+        })
+
+        // 7. Use find() to find the first animal that starts with a vowel. 
+        const animals = ['bunny', 'cat', 'dog', 'elephant', 'frog', 'giraffe', 'hedgehog', 'iguana', 'lynx', 'manatee'];
+        // SOLUTION EXPLAINED: includes() method returns true or false based on whether or not its argument 
+        // is present in the string or array it is called on
+        // the answer is 'elephant', which starts with a vowel
+        const startsVowel = animals.find(e => 'aeiou'.includes(e[0]));
+        
+        console.log('startsVowel:', startsVowel);
+
+        // 8. Use the findIndex() method to find the index of the first animal that ends in a vowel.
+        // SOLUTION EXPLAINED: The last index of a string or array is always item.length-1;
+        // the answer is 'giraffe', which ends in a vowel
+        const endsVowel = animals.find(e => 'aeiou'.includes(e[e.length-1]));
+        
+        console.log('endsVowel:', endsVowel); // giraffe
+
+        // 9. Use find() to find the last number that is double the number before it:
+        // SOLUTION EXPLAINED: Use all three available callback arguments: e, i and a. 
+        // a[i+1] is the next item. if a[i+1] / 2 equals the e, then current item is doubled
+        // by the next item, so the current item is not the last double, BUT
+        // if the a[i+1] / 2 does NOT equal e, then the current item is the "last "double"
+        // The answer is 32, since that is the last double that--the next number, 65, is not double 32
+        const digits = [8, 16, 32, 75, 100, 256];
+
+        const lastDouble = digits.find((e, i, a) => e != a[i+1] / 2);
+
+        console.log('lastDouble:', lastDouble);
+
+        // 10. Use the findIndex() method to find the index of the first number with an integer for its square root.
+        // SOLUTION EXPLAINED: If the square root of an integer is rounded off, the integer does not change,
+        // so, if the square root is rounded off and it is still equal to the square root itself, 
+        // then the square root is an integer
+        // The target is 16, since that is the first number that has an integer for a square root
+        // the expected answer is the index, so 1 is the correct answer
+        const sqRtInt = digits.findIndex(e => Math.round(Math.sqrt(e)) == Math.sqrt(e));
+        
+        console.log('sqRtInt:', sqRtInt);
+
+        // END Lab 07.03
+        // SEE Lab 07.03 Solution
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Lab 04.02</title>
+    
+	<style>
+    
+        body { 
+            background-color: #555;
+            color: #555;
+            font-family: sans-serif;
+            text-align: center;
+        }
+
+        .container {
+            margin: 50px auto;
+            padding: 30px;
+            border-radius: 10px;
+            border: 3px solid #999;
+            width: 650px;
+            height: 65vh;
+            background-color: #ccc;
+        }
+
+        img {
+            width: 90px; 
+            float:left; 
+            padding-right:30px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Lab 04.04 Solution</h1>
+        <h2>Working with String Methods</h2>
+
+    </div>
+    
+    <script>
+
+       // 04.04 Lab
+
+        // 1. Write a function called pluralize() 
+        // that takes in a singular noun and returns
+        // the plural of the word, according to these rules:
+
+        // - if the word is in the animals array, the singular and plural are the same
+        const animals = ["deer", "fish", "moose", "sheep", "swine", "bison", "cod", "salmon", "shrimp", "trout"];
+
+        // - if the word has an irregular plural, that is the word occurs
+        //   as a key in the irregulars object, return that key's value
+        //   ex: "child" => "children"
+        const irregulars = { mouse: "mice", knife: "knives", octopus: "octopi", man: "men", woman: "women", person: "people", child: "children", loaf: "loaves", wolf: "wolves", cactus: "cacti", goose: "geese", foot: "feet", criterion: "criteria", fungus: "fungi", index: "indices", hoof: "hooves", ox: "oxen" };
+
+        function pluralize(word) {
+            // - if the word is in the animals array, the singular and plural are the same
+            if(animals.includes(word)) {
+                return word;
+            }
+            // - if the word has an irregular plural, that is the word occurs
+            //   as a key in the irregulars object, return the irregular pl:
+            // ex: "child" => "children"
+            if (irregulars[word]) {
+               return irregulars[word];
+            }
+            // - if the word ends in "y", drop the "y" and add "ies"
+            // examples: "city" => "cities"   "cherry" => "cherries"
+            if (word.endsWith('y')) {
+                return word.slice(0,-1) + 'ies';
+            }
+            // - if the word ends in "o" , "h" or "x", add "es"
+            // ex: "mango" => "mangoes"   "echo" => "echoes"  "box" => "boxes"
+            if (word.endsWith('o') || word.endsWith('h') || word.endsWith('x')) {
+                return word + 'es';
+            } else {
+                // - if none of the above apply, just add 's'
+                // ex: "apple" => "apples"
+                return word + 's';
+            }
+
+        }
+        
+        // animals array words are the same in singular and plural
+        console.log(pluralize("moose")); // moose
+        console.log(pluralize("salmon")); // salmon
+        // word ends in "o", so add "es" to form plural:
+        console.log(pluralize("mango")); // mangoes
+        // word ends in "h", so add "es":
+        console.log(pluralize("peach")); // peaches
+        // word ends in "x", so add "es":
+        console.log(pluralize("box")); // boxes
+        console.log(pluralize("tax")); // taxes
+        // word ends in "y", so drop "y", so add "ies":
+        console.log(pluralize("cherry")); // cherries
+        console.log(pluralize("city")); // cities
+        // word ends in "y"--but that may not be the only "y"
+        console.log(pluralize("boysenberry")); // boysenberries
+        // none of the above, so just add "s" to form the plural:
+        console.log(pluralize("apple")); // apples
+        console.log(pluralize("yak")); // yaks
+        console.log(pluralize("elephant")); // elephants
+        // irreg plurals:
+        console.log(pluralize("octopus")); // octopi
+        console.log(pluralize("hoof")); // hooves
+        console.log(pluralize("woman")); // women
+        console.log(pluralize("knife")); // knives
+        console.log(pluralize("foot")); // feet
+        console.log(pluralize("child")); // children
+  
+        // END: Lab 04.04
+        // NEXT: Lesson 04.05  
+
+    </script>
+    
+</body>
+
+</html>

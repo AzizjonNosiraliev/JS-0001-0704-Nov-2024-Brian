@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Lab 04.03</title>
+
+    <link rel="stylesheet" href="../css/basic-pg-console.log.css">
+    
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Lesson 04.03 Lab</h1>   
+        <h2>Arrays</h2>
+        <h2>a few basic array methods</h2> 
+        <h2>nested / 2D / matrix arrays</h2> 
+
+        <h3>______________________</h3>
+
+        <h3>see console for output</h3>
+        <h3>switch script to FINAL for solution output</h3>
+
+    </div>
+
+    <script>
+
+        // 1. Make a pets array, containing 'cat', 'dog' and 'bunny'.
+        // ['cat', 'dog', 'bunnt']
+
+        // 2. Use an array method to add 'iguana' and 'parrot' to the end of the array.
+     
+        // ['cat', 'dog', 'bunny', 'iguana', 'parrot']
+
+        // 3. Use an array method to insert 'hamster' between 'dog' and 'bunny'.
+      
+        // ['cat', 'dog', 'hamster', 'bunny', 'iguana', 'parrot']
+
+        // 4. Use an array method to make 'snake' the first pet:
+
+        // ['snake', 'cat', 'dog', 'hamster', 'bunny', 'iguana', 'parrot']
+
+        // 5. Use an array method to put the pets in alphabetical order (A-Z):
+  
+        // ['bunny', 'cat', 'dog', 'hamster', 'iguana', 'parrot', 'snake']
+
+        // 6. Use array methods to move the next to last pet to the beginning of pets. The next to last pet happens to be 'parrot'. Don't remove any pets or write any pet names:
+  
+        // ['parrot', 'bunny', 'cat', 'dog', 'hamster', 'iguana', 'snake']
+
+        // 7. The dog and cat don't like being next to each other, but they both like the bunny, so put the bunny between them. Don't remove any pets or write any pet names:
+  
+        // ['parrot', 'cat', 'bunny', 'dog', 'hamster', 'iguana', 'snake']
+
+        // 8. Given pets2, combine both arrays into a new array called petShopArr, and then alphabetize petShopArr:
+   
+        // petShop: ['bunny', 'parrot', 'canary', 'cat', 'dog', 'gerbil', 'goldfish', 'hamster', 'iguana', 'snake', 'tarantula', 'turtle']
+
+        // 9. Make a string called petsShopStr, consisting of all the pets in petShopArr, with the pets separated by ' & ':
+
+        // canary & cat & dog & gerbil .. etc.
+
+        // 10. Use two array methods to get the index of the dog. HINT: You need to make a new array.
+ 
+        // given these pets:
+        const pets = ['bunny', 'cat', 'dog', 'ferret', 'Gila monster', 'hamster', 'iguana']
+        // The cat and dog do not like to be together. put the bunny between them
+        // Get da bunnyy..!! i
+        let buni = pets.shift(); // shift removes and returns first item
+        // put the bunny between the cat and the dog:
+        pets.splice(pets.indexOf('dog'), 0, buni);
+        // put the reptiles together at the end by swapping Gila monster and hamster
+        // unlike shift() which returns the item only, splice() returns a new array
+        // containing the item(s); if only one item is spliced, it still returns an array
+        // so: ['Gila monster'] is returned by spicing that one item only
+        let Gmon = pets.splice(pets.indexOf('Gila monster'), 1);
+        // from array ['Gila monster'] splice back just the item at index 0
+        pets.splice(pets.indexOf('iguana'), 0, Gmon[0]); // Gmon[0] is 'Gila monster'
+        console.log(pets);
+
+        // BONUS CHALLENGE: write a similar function called makeShuffledDoubles()
+        // that takes an array as its argument and returns a randomized ("shuffled") 
+        // array of twice the length of the original with each item represented twice 
+        // (2 apples, 2 cats, etc.)
+        
+
+    </script>
+    
+</body>
+
+</html>

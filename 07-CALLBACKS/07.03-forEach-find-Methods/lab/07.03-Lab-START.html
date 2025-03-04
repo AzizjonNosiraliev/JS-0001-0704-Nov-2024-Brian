@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>07.03 Lab</title>
+
+    <style>
+
+        body { 
+            background-color: #555;
+            color: #555;
+            font-family: sans-serif;
+            text-align: center;
+        }
+
+        .container {
+            margin: 50px auto;
+            padding: 30px;
+            border-radius: 10px;
+            border: 3px solid #999;
+            width: 650px;
+            height: 65vh;
+            background-color: #ccc;
+        }
+
+        img {
+            width: 90px; 
+            float:left; 
+            padding-right:30px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div>
+            <h1>JS Lab 07.03 <br>forEach <br>vs. map-filter chaining
+                <br>refactoring if-else with ternary</h1>   
+    
+            <h3>Please check your Lab work against this Solution file 
+            <br>only after having given the Lab your best effort!</h3>
+        </div>
+
+    </div>
+    
+    <script>
+
+        const scrabbleValues = {
+            "A": 1, "B": 3, "C": 3, "D": 2, "E": 1, "F": 4, "G": 2, "H": 4, "I": 1, "J": 8,"K": 5, "L": 1, "M": 3, "N": 1, "O": 1, "P": 3, "Q": 10, "R": 1, "S": 1, "T": 1, "U": 1, "V": 4, "W": 4, "X": 8, "Y": 4, "Z": 10, " ": 0, "-": 0,
+        };
+        
+        const fruits = ['apple', 'apricot', 'banana', 'blueberry', 'cherry', 'cranberry', 'grape', 'kiwi', 'lemon', 'lime', 'mango', 'orange', 'papaya', 'peach', 'pear', 'pineapple', 'plum', 'raspberry', 'strawberry', 'tangerine', 'watermelon'];
+
+        const furniture = ["Desk", "Chair", "Bed", "Table", "Sofa", "Card Table", "Tea Table", "Chest", "Dresser", "Sideboard", "Demi-lune Table"];
+
+        const animals = ['bunny', 'cat', 'dog', 'elephant', 'frog', 'giraffe', 'hedgehog', 'iguana', 'lynx', 'manatee'];
+
+        const vowels = 'aeiou';
+
+        // 1. From fruits, furniture, animals -- or any other array of strings -- make an object array, where each item is an object of 3 properties.
+        /* { 
+                name: 'apple', 
+                startsWithVowel: true,
+                scrabbleScore: 9 
+            }, 
+        */
+
+        // scrabbleScore equals the sum of the value of each letter, as found in the scrabbleValues object
+
+        console.log('fruitsObjArr:');
+
+        // 2. Refactor the above to use a function that takes an array as its
+        //    input/argument and returns the object array -- so same as 1, but
+        //    with a function
+
+        function makeObject(arr) {
+            // Declare vowels string so we can check if first letter of word if a vowel
+            const vowels = 'aeiou';
+            // Everything after the return below is the array of objects
+            // arr.map() iterates over arr and returns an object for each element in arr
+            return arr.map(e => {
+                // declaring scrabble score as 0
+                let score = 0;
+                // uppercase the word, split into array of letters: ['C', 'A', 'T'] then iterate w forEach
+                e.toUpperCase().split("").forEach(e => score += scrabbleValues[e]);
+                // Declaring our object with 3 properties to return into array
+                return {
+                    name: e,
+                    // vowels.includes() will return a boolean, so we can use it in the object declaration
+                    startsWithVowel: vowels.includes(e[0].toLowerCase()),
+                    scrabbleScore: score
+                };
+            });
+        }
+
+        console.log(makeObject(fruits)); // 0
+        console.log(makeObject(furniture)); // -1
+        console.log(makeObject(animals)); // 0
+
+        // map()
+
+        // 3. Given nums array, use map() to interate the array. 
+        //   Cube the even numbers and square the odds. 
+        //   Save the result to new array called numz
+        //   new array has same number of items as original, so map() is good for this
+        const nums = [4, 3, 14, 5, 7, 9, 8, 6, 17, 10, 12, 15];
+        const numz = nums.map(e => e%2 == 1 ? e**2 : e**3);
+        console.log(numz); // [64, 9, 2744, 25, 49, 81, 512, 216, 289, 1000, 1728, 225]
+
+        // find() method
+
+        // 4. Write a function that takes in an array of strings and returns the first items that starts with a vowel. Also return its index in an object:
+        // { first_vowel_word:"elephant", index: 3 }
+        function findFirstVowelWord(arr) {
+            const VOWELS = 'aeiou';
+            let firstWord = arr.find(e => VOWELS.includes(e[0].toLowerCase()));
+            let firstIndex = arr.findIndex(e => VOWELS.includes(e[0].toLowerCase()));
+            return { first_vowel_word: firstWord, index: firstIndex };
+        }
+
+        console.log(findFirstVowelWord(fruits));
+        console.log(findFirstVowelWord(furniture));
+        console.log(findFirstVowelWord(animals));
+        
+    </script>
+
+</body>
+</html>

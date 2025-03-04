@@ -1,0 +1,36 @@
+#pet-info {
+    background-color: tan;
+    font-size: 1.5rem;
+    line-height: 2.25rem;
+    min-height: 400px;
+    padding: 20px;
+    width: 500px;
+    margin: 0 auto;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border: 2px solid black;
+}
+
+button {
+    width: 544px;
+    margin: 0 auto;
+    padding: 10px 20px;
+    font-size: 1.5rem;
+    letter-spacing: 10px;
+    font-weight: bold;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    color: darkred;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: darkred;
+    color: white;
+}
+
+#cat-btn {
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+}

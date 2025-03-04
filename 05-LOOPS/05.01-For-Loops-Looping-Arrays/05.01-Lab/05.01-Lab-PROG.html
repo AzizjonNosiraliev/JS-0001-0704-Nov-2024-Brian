@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Lab 05.01</title>
+    
+	<style>
+    
+        body { 
+            background-color: #555;
+            color: #555;
+            font-family: sans-serif;
+            text-align: center;
+        }
+
+        .container {
+            margin: 50px auto;
+            padding: 30px;
+            border-radius: 10px;
+            border: 3px solid #999;
+            width: 650px;
+            height: 65vh;
+            background-color: #ccc;
+        }
+
+        img {
+            width: 90px; 
+            float:left; 
+            padding-right:30px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Lab 05.01</h1>
+        <h2>Loops and Arrays</h2>
+
+        <img src="images/cards/10-of-Clubs.png">
+        <img src="images/cards/Jack-of-Clubs.png">
+        <img src= "images/cards/Queen-of-Clubs.png">
+        <img src="images/cards/King-of-Clubs.png">
+        <img src="images/cards/Ace-of-Clubs.png">
+
+        <button id="deal">Deal!</button>
+
+    </div>
+    
+    <script>
+
+        // 1. Write a for loop that makes the following array: 
+        //    [3, 5, 7, 9, 11, 13, 15, 17, 19, 21]
+        const nums1 = [];
+        for(let i = 3; i <= 21; i+=2) {
+            nums1.push(i);
+        }
+        console.log(nums1);
+
+        // 2. Write a for loop that makes the following array: 
+        //    [100, 80, 60, 40, 20, 0, -20, -40, -60, -80, -100]
+        const nums2 = [];
+        for(let i = 100; i >= -100; i-=20) {
+            nums2.push(i);
+        }
+        console.log(nums2);
+
+        // 3. Given this array of numbers, use a for loop to add up 
+        // all the numbers. Save the total to a variable, sum.
+        const mix = [45, 54, 63, 72, 89, 91, 106];
+        let sum = 0;
+        for(n of mix) {
+            sum += n;
+        }
+        console.log('sum:', sum); // 520
+
+        // 4. Given this array of mixed numbers, 'number-like strings' and fruits, find the sum of the numbers and 'number-like strings'. This requires you to ignore the fruits and to convert the 'number-like strings' to actual numbers. Hint: Think Falsey!
+        const mixedBag = ["4", 5, "6", "apple", 7, "8", "kiwi", 9, 10, "plum"];
+        sum = 0;
+        for(m of mixedBag) {
+            if(+m) {
+               sum += +m; 
+            } 
+        }
+        console.log('sum:', sum); // 49
+
+        // 5. The HTML page has 5 card images, with the src hard-coded into the html. Using JS, replace the 5 cards with 5 random cards:
+
+        // get all 5 img tags w querySelectorAll; they go into an array
+        const imageArr = document.querySelectorAll('img');
+
+        // card values and suits for making a 52-card deck
+        let cardValues = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', 'King', 'Ace'];
+        let suits = ['Hearts', 'Spades', 'Diamonds', 'Clubs'];
+
+        // a new empty arr to hold the deck, which we will make on a nested loop
+        const cards = [];
+    
+        // iterate over cardValues and suits arrays
+        for (let i = 0; i < cardValues.length; i++) {
+            for (let j = 0; j < suits.length; j++) {
+                // concat a card and push it into deck
+                cards.push(`${cardValues[i]}-of-${suits[j]}.png`);
+            }
+        }
+
+        // shuffle the deck
+        cards.sort(function(a,b) {
+            return Math.random() - .5;
+        });
+
+        // deep-copy the deck
+        let cardsCopy = [...cards];
+
+        // function runs on btn click, deals 5 cards (randomized due to shuffle)
+        function dealCards(cardsCopy) {
+            
+            // if down to last few cards, restock the deck
+            if(cardsCopy.length < 5) {
+                cardsCopy = [...cards];
+                // shuffle the deck
+                cardsCopy.sort(function(a,b) {
+                    return Math.random() - .5;
+                });
+            }
+
+            // deal 5 cards on a loop, just pop each card
+            for (let i = 0; i < 5; i++) { 
+                let card = cardsCopy.pop(); // take the next card
+                // set scr of card img (output the card)
+                imageArr[i].src = `images/cards/${card}`;
+            }
+        }
+
+        // 6. Make a button that when clicked calls a function that outputs 5 the random cards
+        const dealButton = document.getElementById('deal');
+        dealButton.addEventListener('click', function() {
+            dealCards(cardsCopy);
+        });
+
+        // another algo for shuffling: 
+        // Fisher-Yates Shuffle Algo
+        
+        // A. make a deck of cards
+        const deckOfCards = [];
+        for (let i = 0; i < cardValues.length; i++) {
+            for (let j = 0; j < suits.length; j++) {
+                // concat a card and push it into deck
+                deckOfCards.push(`${cardValues[i]}-of-${suits[j]}.png`);
+            }
+        }
+        console.log('deckOfCards:', deckOfCards);
+
+        // Fisher-Yates Shuffle: classic algo for randomizing array
+
+        // B. shuffle the array the Fisher-Yates Shuffle way:
+        // loop the array
+        for(let i = 0; i < deckOfCards.length; i++) {
+            // save current item so it doesn't get erased
+            let temp = deckOfCards[i]; 
+            // generate rand int in range of array index
+            let r = ~~(Math.random() * deckOfCards.length);
+            // replace current item w random item
+            deckOfCards[i] = deckOfCards[r];
+            // replace random item w current item to complete the swap
+            deckOfCards[r] = temp;
+        }
+        
+        console.log('Fisher-Yates Shuffle Algo deckOfCards:', deckOfCards);
+
+        // END: Lab 05.01  
+        // NEXT: Lesson 05.02  
+
+    </script>
+    
+</body>
+
+</html>

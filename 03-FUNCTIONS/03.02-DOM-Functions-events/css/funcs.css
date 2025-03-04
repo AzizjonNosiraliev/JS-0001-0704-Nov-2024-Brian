@@ -1,0 +1,145 @@
+body {
+    background-color: #333;
+    font-family: sans-serif;
+    line-height: 2em;
+}
+
+.container {
+    width: 1000px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 3px solid #333;
+    background-color: #ccc;
+    text-align: left;
+    min-height: 80vh;
+}
+
+/* button, input, select {
+    min-width: 60px;
+    padding: 10px;
+    font-size: 1em;
+    margin: 1em;
+    border-radius: 5px;
+    letter-spacing: 2px;
+    font-weight: bold;
+    display: inline-block;
+} */
+
+button:hover {
+    cursor: pointer;
+    background-color: cyan;
+}
+
+button:active {
+    background-color: cornflowerblue;
+    color: white;
+}
+
+#greetings-box {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+#greetings-box button,  #greetings-box input, select {
+    font-size: 1.25rem;
+    width: 150px;
+    margin: 10px;
+    padding: 5px 15px;
+    height: 60px;
+    border-radius: 5px;
+}
+
+select {
+    height: 40px;
+}
+
+#fruit-menu {
+    width: 180px;
+}
+
+#math-menu {
+    font-size: 1.8rem;
+    text-align: center;
+    width: 80px;
+    height: 45px;
+}
+
+#greetings-box input {
+    height: 40px;
+}
+
+#out-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: coral;
+    color: white;
+    font-family: monospace;
+    font-family: sans-serif;
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+    height: 60px;
+    border-radius: 10px;
+}
+
+#output a {
+    color: yellow;
+    border-radius: 10px;
+}
+
+h2 {
+    border: 3px solid #222;
+    background-color: #eee;
+    padding: 20px;
+    margin-top: 2em;
+    color: #333;
+}
+
+.calculator {
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: center;
+    align-items: center;
+    margin: 10px auto;
+    padding: 10px;
+    background-color: coral;
+    color: white;
+    border-radius: 10px;
+    border: 3px solid #333;
+}
+
+#num1, #num2, #c, #f {
+    font-size: 1.25em;
+    font-weight: bold;
+    text-align: center;
+    /* align-self: stretch; */
+    height: 35px;
+    background-color: #eee;
+    border-radius: 5px;
+    border: 2px solid #333;
+    margin: 10px;
+    padding: 5px 15px;
+    width: 100px;
+}
+
+section {
+    margin: 5px;
+}
+
+/* fahrenheit - celsius converter */
+#fahr-cels {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   font-size:1.33rem; 
+   font-weight:bold;
+}
+
+#fahr, #cels {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}

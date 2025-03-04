@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 07.02</title>
+    <style>
+    
+        body { 
+            background-color: #555;
+            color: #555;
+            font-family: sans-serif;
+            text-align: center;
+        }
+
+        .container {
+            margin: 50px auto;
+            padding: 30px;
+            border-radius: 10px;
+            border: 3px solid #999;
+            width: 650px;
+            height: 65vh;
+            background-color: #ccc;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Lab 07.02</h1>
+        <h2>See console for output</h2>
+    </div>
+
+    <script>
+
+        const fruits = ["grapefruit", "apple", "plum", "banana", "pineapple", "cherry", "pear", "apricot", "grape", "kiwi", "lemon", "mango", "orange", "papaya", "peach", "lime", "pear", "raspberry", "apricot", "boysenberry", "blueberry", "strawberry"];
+        
+        /*  
+        make fruit treats:
+
+        Given this array of fruits, make a new array called treats, subject to the following condtions:
+        
+        a.) If the fruit has 5 letters, make 'lolipop'
+        b.) If the fruit starts with 'p', make a 'popsicle'
+        c.) If it's a berry, make a 'muffin'
+        d.) Else make a 'jellybean'
+
+        Also add the correct article in front of the fruit: 'a' or 'an':
+        So if the input array is ['apple', 'banana']
+        the output array is ['an apple lolipop', 'a banana jellybean']
+
+        expected result:
+        [ "an apple lolipop", "a plum popsicle", "a banana jellybean", .. etc.  "a raspberry muffin" ..etc. ]
+    
+
+        Also using fruits, make a new array called fruitArticles containing all the same fruits, 
+        [ "apple jelly", "plum popsicle", "banana jellybean", .. etc.  "raspberry jam" ..etc. ]
+        */ 
+        // const treats = [];
+        // for(fru of fruits) {
+        //     if(fru.length == 5 ) {
+        //         treats.push(`${fru} lolipop`);
+        //     } else if(fru[0] == 'p') {
+        //         treats.push(`${fru} popsicle`);
+        //     } else if(fru.includes('berry')) {
+        //         treats.push(`${fru} muffin`);
+        //     } else {
+        //         treats.push(`${fru} jellybean`);
+        //     }
+        // // }
+
+        const treats = fruits.map(i => {
+            let article = "aeiou".includes(i[0]) ? 'an' : "a";
+            if(i.length == 5 ) {
+                return (`${article} ${i} lolipop`);
+            } else if(i[0] == 'p') {
+                return(`${article} ${i} popsicle`);
+            } else if(i.includes('berry')) {
+                return(`${article} ${i} muffin`);
+            } else {
+                return(`${article} ${i} jellybean`);
+            }
+        }
+        );
+        console.log('treats:', treats);
+
+
+        // CHALLENGE: Using sort() method and arrow => function, sort the numbers in ascending order
+        let nums = [32, 2, 353, 10000, 21, 64, 8, 123, 95, 5, 1432];
+        
+        nums.sort((a,b) => a-b);
+
+        console.log('nums:', nums); // [2, 5, 8, 21, 32, 64, 95, 123, 353, 1432, 10000]
+
+
+        // given this array of Chinese Zodiac animal objects:
+        let animals = [ 
+            {eng: "chicken", also: 'rooster', chi: "ji", pin: "ji&#772;", year: 2029, tone: 1},
+            {eng: "cow", also: 'ox', chi: "niu", pin: "niu&#769;",  year: 2021, tone: 2},
+            {eng: "dog", also: null, chi: "gou", pin: "gou&#780;",  year: 2030, tone:3},
+            {eng: "dragon", also: null, chi: "long", pin: "lo&#769;ng", year: 2024, tone: 2},
+            {eng: "goat", also: 'sheep', chi: "yang", pin: "ya&#769;ng", year: 2027, tone: 2},
+            {eng: "horse", also: null, chi: "ma", pin: "ma&#780;", year: 2026, tone: 3},
+            {eng: "monkey", chi: "hou", also: 'houzi', pin: "ho&#769;uzi", year: 2028, tone: 2},
+            {eng: "pig", also: null, chi: "zhu", pin: "zhu&#772;", year: 2031, tone: 1},
+            {eng: "rabbit", chi: "tu", also: 'tuzi', pin: "tu&#768;zi", year: 2023, tone: 4},
+            {eng: "rat", chi: "shu", also: 'laoshu', pin: "la&#780;oshu&#780;", year: 2020, tone: 3},
+            {eng: "snake", also: null, chi: "she", pin: "she&#769;", year: 2025, tone: 2},
+            {eng: "tiger", chi: "hu", also: 'laohu', pin: "la&#780;ohu&#780;", year: 2022, tone: 3} 
+        ];
+
+        // Chinese Zodiac Animals: sorting objects by key
+
+        // CHALLENGE: Using sort() method and arrow => function, sort the animals by year, in descending order; use toSorted() to return a new array without modifying the original
+        const sorted = animals.toSorted((a,b) => b.year - a.year);
+        console.log('sorted:', sorted);
+
+        // CHALLENGE: Also using sort() method and arrow => function, sort the animals by Chinese name (chi property), in ascending order (A-Z); use toSorted() to return a new array without modifying the original
+        const animalsByChineseNameAsc = animals.toSorted((a,b) => a.chi > b.chi ? 1 : -1);
+        console.log('animalsByChineseNameAsc:', animalsByChineseNameAsc);
+
+        // ***  ### *** REFACTORING: UBER-CHALLENGE: *** ### ***
+        // We have done this exercise before (Lab 04.04)/
+        // Now we will refactor it using map() and =>
+        // Given the fruits array as well as this array of things (all singlur nouns):
+        const things = ['city', 'salary', 'porch', 'bunny', 'octopus', 'king', 'car', 'cranberry', 'child', 'hoof', 'ox', 'patch', 'potato', 'trout', 'tornado', 'restaurant', 'canyon', 'dog', 'hammer', 'echo', 'deer', 'chair', 'knife', 'goose', 'cow', 'scarf', 'tomato', 'horse', 'box', 'mouse', 'tooth', 'elephant', 'peron', 'queen', 'point', 'beach', 'floor', 'prince'];
+        // Concatenate the two arrays into one big array, and then:
+        const nouns = things.concat(fruits);
+        //Randomize new array
+        nouns.sort((a,b) => Math.random() - 0.5);
+        console.log('nouns:', nouns);
+
+        
+        
+        // Using map() with =>
+        // Generate a new array of plural nouns, according to these rules:
+        
+            // - if the word is in this animals array, the singular and plural are the same
+            const animalss = ["deer", "fish", "moose", "sheep", "swine", "bison", "cod", "salmon", "shrimp", "trout"];
+            
+            
+            const irregulars = { mouse: "mice", knife: "knives", octopus: "octopi", man: "men", woman: "women", person: "people", child: "children", loaf: "loaves", wolf: "wolves", cactus: "cacti", goose: "geese", foot: "feet", criterion: "criteria", fungus: "fungi", index: "indices", hoof: "hooves", ox: "oxen", datum: "data", appendix: "appendices", tooth: "teeth", scarf: "scarves", calf: "calves", leaf: "leaves" };
+
+            const pluralNouns = nouns.map(word => {
+            if(animalss.includes(word)){
+                return word;
+            } else if(irregulars[word]) {
+                return irregulars[word];
+            } else if(word.endsWith('y')) {
+                word = word.slice(0,-1);
+                return word +"ies";
+            } else if(word.endsWith('o') || word.endsWith('x') || word.endsWith('h')) {
+                return word + 'es';
+            } else {
+                return word + 's';
+            }
+        });
+        console.log('pluralNouns', pluralNouns);
+    </script>
+    
+</body>
+</html>

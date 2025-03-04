@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>03.04 Restaurant Bill Calculator</title>
+
+    <style>
+        
+        body {
+            background-color: #888;
+            font-family: sans-serif;
+            color: #333;
+            background-image: url(images/dining-overhead-2408x1366@2x.jpg);
+        }
+
+        .container {
+            width: 22%;
+            margin: 30px auto; 
+            background-color: rgba(77,77,77,.77); 
+            min-height: 40vh; 
+            text-align: center; 
+            padding: 20px;
+            border-radius: 30px;
+            color: #fff;
+        }
+
+        h1 {
+            font-size: 1.5em;
+        }
+
+        input, button, select {
+            font-size: 1.15em;
+            padding: 0.25em;
+            display: block;
+            margin: 0.5em auto;
+            width: 200px;
+        }
+
+        button {
+            width: 210px;
+        }
+
+        #output {
+            text-align: left;
+        }
+
+        .check-num {
+            color: red; 
+            font-size: 1.5em; 
+            font-weight:bold;
+        }
+
+    </style> 
+
+</head>
+<body>
+
+    <div class="container">
+
+        <h1>03.04 - Restaurant <br>Bill Calculator</h1>
+        <hr>
+
+        <!-- <form> -->
+
+            <input type="number" id="food-box" placeholder="Food Sub-total">
+            <input type="number" id="bev-box" placeholder="Bev Sub-total">
+
+            <select id="tip-menu">
+                <option value="choose">Tip %</option>
+                <option value="7">7% Tip (Yuk)</option>
+                <option value="10">10% Tip (Low)</option>
+                <option value="12">12% Tip (Meh)</option>
+                <option value="15" selected>15% Tip (Fine)</option>
+                <option value="18">18% Tip (Very Good)</option>
+                <option value="20">20% Tip (Excellent)</option>
+                <option value="25">25% Tip (Great)</option>
+            </select>
+
+            <select id="tax-menu">
+                <option value="choose">Sales Tax %</option>
+                <option value="0">0% Tax</option>
+                <option value="4">4% Tax</option>
+                <option value="6">6% Tax</option>
+                <option value="8.875" selected>8.875% Tax</option>
+                <option value="10">10% Tax</option>
+            </select>
+        
+            <button id="calc-btn">Calculate</button>
+
+            <h3 id="out-box"></h3>
+
+        <!-- </form> -->
+
+    </div>
+
+    <!-- START .js -->
+    <script src="js/03.04-Restaurant-Bill-START.js"></script>
+
+    <!-- FINAL .js -->
+    <!-- <script src="js/03.04-Restaurant-Bill-FINAL.js"></script> -->
+
+    <!-- PROG .js -->
+    <!-- <script src="js/03.04-Restaurant-Bill-PROG.js"></script> -->
+    
+</body>
+</html>

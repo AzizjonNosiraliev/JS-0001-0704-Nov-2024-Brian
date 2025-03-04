@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Lab 05.01</title>
+    
+	<style>
+    
+        body { 
+            background-color: #555;
+            color: #555;
+            font-family: sans-serif;
+            text-align: center;
+        }
+
+        .container {
+            margin: 50px auto;
+            padding: 30px;
+            border-radius: 10px;
+            border: 3px solid #999;
+            width: 650px;
+            height: 65vh;
+            background-color: #ccc;
+        }
+
+        img {
+            width: 90px; 
+            float:left; 
+            padding-right:30px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Lab 05.01</h1>
+        <h2>Loops and Arrays</h2>
+
+        <img src="images/cards/10-of-Clubs.png">
+        <img src="images/cards/Jack-of-Clubs.png">
+        <img src= "images/cards/Queen-of-Clubs.png">
+        <img src="images/cards/King-of-Clubs.png">
+        <img src="images/cards/Ace-of-Clubs.png">
+
+        <button id="deal">Deal!</button>
+
+    </div>
+    
+    <script>
+
+        // 1. Write a for loop that makes the following array of 
+        //    consecutive odd numbers: [1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21]
+        const oddNumsArr = [];
+
+        for(let n = 0; n < 22; n++) {
+            if(n % 2 != 0) oddNumsArr.push(n);
+        }
+        console.log('oddNums:',oddNumsArr);
+
+
+        // 2. Write a for loop that makes the following array:
+        //    [100, 80, 60, 40, 20, 0, -20, -40, -60, -80, -100]
+        const arrOfNums = [];
+
+        for(let j = 100; j >= -100; j -= 20) {
+            arrOfNums.push(j);
+        }
+        console.log('arrOfNums:', arrOfNums);
+
+        // 3. Use a for loop to add up 
+        // all the odd numbers in the oddNums array. Save the total to a variable, sum.
+        let sum = 0;
+        for(let i = 0; i < oddNumsArr.length; i++ ) {
+            sum += oddNumsArr[i];
+        }
+        
+        console.log('sum:', sum); // 121
+        //another way to write the for loop above
+        sum = 0;
+        for(nums of oddNumsArr) {
+            sum += nums;
+        }
+
+        // 4. Given this array of mixed numbers, 'number-like strings' and fruits, find the sum of the numbers and 'number-like strings'. This requires you to ignore the fruits and to convert the 'number-like strings' to actual numbers. Hint: Think Falsey!
+        const mixedBag = ["4", 5, "6", "apple", 7, "8", "kiwi", 9, 10, "plum"];
+        
+        sum = 0;
+        for(item of mixedBag) {
+            if(Number(item)) {
+                sum += Number(item);
+            }
+        }
+        console.log('sum:', sum); // 49
+
+
+        // HW / LAB / UBER-BONUS: 
+        // DEALING A 5-CARD HAND OF POKER !!
+        // This html page has 5 card images, with each src hard-coded into the html. 
+        // The page also has a Deal button
+
+         // 6. Get the button and have it call the dealCards function when clicked
+
+         // 7. Get all 5image elements at once (log the result, which should be a Node List of 5 img tags)
+
+         // 8. Make a deck of cards array using a nested loop that iterates both these arrays
+         //    refer to the image file names in the images folder for the file naming convention:
+         //    Jack-of-Hearts.png, Queen-of-Diamonds.png, 5-of-Clubs.png, etc.
+        const cardValues = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', 'King', 'Ace'];
+        const suits = ['Hearts', 'Spades', 'Diamonds', 'Clubs'];
+
+        // 9. Declare the function
+
+        // 10. Copy the deck array for game play (make a deep copy)
+
+        // 11. Randomize the items in the deck array (shuffle the deck)
+            
+           
+        // 12. Loop the Node List of image elements
+        
+        //        13. Each time the loop runs, pop a card off the deck
+        //        14. Set the src of the current image to the card.
+        
+        // 15. Load / refresh this page in the browser and click the Deal button.
+
+        // 16. Check console for errors and debug, as needed
+
+       
+      
+
+
+        // <img src="images/cards/10-of-Clubs.png">
+        // <img src="images/cards/Jack-of-Clubs.png">
+        // <img src= "images/cards/Queen-of-Clubs.png">
+        // <img src="images/cards/King-of-Clubs.png">
+        // <img src="images/cards/Ace-of-Clubs.png">
+        
+
+        // END: Lab 05.01  
+        // NEXT: Lesson 05.02  
+
+    </script>
+    
+</body>
+
+</html>

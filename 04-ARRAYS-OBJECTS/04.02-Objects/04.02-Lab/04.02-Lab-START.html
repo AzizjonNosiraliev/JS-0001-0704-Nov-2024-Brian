@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Lab 04.02 Solution</title>
+    
+	<style>
+    
+        body { 
+            background-color: #555;
+            color: #555;
+            font-family: sans-serif;
+            text-align: center;
+        }
+
+        .container {
+            margin: 50px auto;
+            padding: 30px;
+            border-radius: 10px;
+            border: 3px solid #999;
+            width: 650px;
+            height: 65vh;
+            background-color: #ccc;
+        }
+
+        img {
+            width: 90px; 
+            float:left; 
+            padding-right:30px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Lab 04.02</h1>
+        <h2>Making an Object with Properties and a Method</h2>
+
+    </div>
+    
+    <script>
+
+        // 04.02 Lab
+
+        /* 
+        1. Make an object variable called product. 
+                In the object variable declaration, include the 
+                following properties of indicated key and datatype
+                For the values, refer to the method's return value
+
+            product object's properties: key (datatype)
+                - prodName (string)
+                - patentNum (number)
+                - assemblyRequired (boolean)
+                - buzzwords (array with 3 items)
+                - company (object with 2 properties: name, country)
+                - promote (method) the returns a string concatenated
+                from ALL the other properties and array items:
+                promote method returns:
+                "Announcing Doo-Dad Inc.'s newest high-tech, labor-saving, 
+                water-resistant Wonder Widget! Made in U.S.A. Patent number: 7654321.
+                Some assembly required."
+                HINT: Use if-else logic in the method to concatnate or not based on the boolean
+        */
+
+            // 'high-tech', 'labor-saving', 'water-resistant'
+            // 'Doo-Dad Inc.
+            // 'Some assembly required'
+
+
+        /*
+        2. Log the following properties of the object:
+                - the whole object
+                - the boolean, including with it the label "Assembly Required:"
+                - the first item in the buzzwords array
+                - the last item in buzzwords, accessed via the array length
+                - the company name and country as: "All Doo-Dad, Inc. products are made in U.S.A."
+                - the promote method: 
+                Get Doo-Dad Inc.'s new high-tech, labor-saving, water-resistant Wonder Widget! 
+                Made in U.S.A. Patent number: 7654321. Some assembly required.
+        */
+
+        console.log(); // {} (click arrow to open and see all properties)
+        console.log("Assembly Required:"); // Assembly Required: true
+        console.log(); // high-tech
+        console.log(); // water-resistant
+        console.log(`All products are made in `); // All Doo-Dad, Inc. products are made in U.S.A.
+        console.log(); // Get Doo-Dad Inc.'s new high-tech, labor-saving, water-resistant Wonder Widget! 
+        // Made in U.S.A. Patent number: 7654321. Some assembly required.
+
+        /*
+        3. Add four new properties outside of the object. In other words, do not add
+        these new properites directly into the object declaration:
+            - msrp (number) -- MSRP (Manufacturer's Suggested Retail Price)
+            - discount (number) -- as decimal: .2 means 20%
+            - salePrice (result of math done with mspr and discount)
+            - caution (string)
+        */
+
+        // "Water-resistant does NOT mean waterproof. Do not submerge";
+        // 'Some assembly required';
+                // `Announcing 's newest `;
+
+            // console.log();
+
+        /*
+        4. Update the promote method to include the new properties. 
+           - do not edit the original object method
+             HINT: product.promote = function()
+           - The promote method's updated return value should be:
+                "Get Doo-Dad Inc.'s new high-tech, labor-saving, water-resistant Wonder Widget! Made in U.S.A. 
+                Made in U.S.A. Patent number: 7654321. Some assembly required.
+                *** MSRP: $40 *** ON SALE! 20% OFF *** NOW ONLY: $32 ***
+                (CAUTION: Water-resistant does NOT mean waterproof. Do not submerge.)"
+            - log the promote method to see the changes.
+        */
+
+        // Get Doo-Dad Inc.'s new high-tech, labor-saving, water-resistant Wonder Widget! 
+        // Made in U.S.A. Patent number: 7654321. Some assembly required.
+        // *** MSRP: $40 *** ON SALE! $20% OFF *** NOW ONLY: $32;
+
+        /*
+        5. Update / change properties and log the whole object and the method again:
+            - flip the boolean to false
+            - increase the MSRP to $75
+            - increase the discount to 50%
+            - push another buzzword into the array: "shock-resistant"
+            - update the promote method to include the new array item
+            - log the promote method to see the changes.
+        */
+
+        // 'shock-resistant'
+
+        // 'Some assembly required
+        // `Announcing `;
+
+        console.log();
+        // Get Doo-Dad Inc.'s new high-tech, labor-saving, water-resistant, shock-resistant Wonder Widget! 
+        // Made in U.S.A. Patent number: 7654321. Some assembly required.
+        // *** MSRP: $75 *** ON SALE! $50% OFF *** NOW ONLY: $37.50;
+
+    </script>
+    
+</body>
+
+</html>

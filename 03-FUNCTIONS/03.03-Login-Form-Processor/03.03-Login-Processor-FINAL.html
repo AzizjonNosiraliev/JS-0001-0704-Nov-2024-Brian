@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">˜
+    
+    <title>Lesson 07.06 Login Form Processor</title>
+
+    <link rel="stylesheet" href="css/basic-pg-console.log.css">
+
+</head>
+<body>
+
+    <nav>
+        <ul>
+            <li style="float:left">Lesson 07.06</li>
+            <li>About</li>
+            <li>Activities</li>
+            <li>Join</li>
+            <li>Log In</li>
+        </ul>
+    </nav>
+
+    <div class="container">
+
+        <h1>Login Form Processor</h1>
+        <h2>Welcome USER</h2>
+
+        <button><< Back</button>
+
+    </div>
+
+    <script>
+
+        const USER = 'amy';
+        const PSWD = 'abc';
+        const h2 = document.querySelector('h2');
+        const backBtn = document.querySelector('button');
+
+        let user = sessionStorage.getItem('user');
+        let pswd = sessionStorage.getItem('pswd');
+
+        if(user === USER && pswd === PSWD) {
+            h2.textContent = `Welcome, ${user}`; // output Welcome
+        } else { // else output "Login Failed":
+            h2.textContent = "Login Failed!";
+        }
+
+        backBtn.addEventListener('click', function() {
+            window.history.back();
+        });
+       
+    </script>
+    
+</body>
+</html>

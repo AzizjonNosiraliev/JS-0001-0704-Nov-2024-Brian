@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>04.02 Object Properties</title>
+
+    <link rel="stylesheet" href="css/basic-pg-console.log.css">
+    <link rel="stylesheet" href="css/car-animals-objects.css">
+    
+</head>
+
+<body>
+    
+    <div class="container">
+
+        <h1>04.02 Object Properties</h1> 
+        <hr>
+
+        <div>
+
+            <img src="images/cars/1999 ford mustang gt.jpg" id="car-pic" class = "car">
+
+            <button>Get Car Info</button>
+
+            <h2 id="car-title"></h2>
+            <h3 id="car-mpg"></h3>
+            <h3 id="car-engine"></h3>
+            <h3 id="car-options"></h3>
+            <h3 id="car-reviews-ratings"></h3>
+            <p id="car-listing"></p>   
+
+        </div>
+
+        <div>
+<!-- 
+            <h2>PM LAB: Make a Car Menu like the animals menu</h2>
+            <h2>Choose a car from the menu to display car pic and info</h2>
+            <h2>Make a cars.js file containing the car data</h2>
+            <h2>Raw data and images are in the slack</h2> -->
+
+            <img src="images/cars/1999 ford mustang gt.jpg" id="car-pic2" class = "car">
+
+            <select id="car-menu">
+                <option value="choose">Choose a car..</option>
+                <option value="Mustang GT">1998 Ford Mustang GT</option>
+                <option value="Camry">2020 Toyota Camry</option>
+                <option value="CR-V">2022 Honda CR-V</option>
+                <option value="Versa">2021 Nissan Versa</option>
+                <option value="Silverado 1500">2023 Chevy Silverado 1500</option>
+                <option value="S-Class">2023 Mercedes-Benz S-Class</option>
+                <option value="Civic">2022 Honda Civic</option>
+                <option value="Model 3">2023 Tesla Model 3</option>
+                <option value="Corvette">2022 Chevy Corvette</option>
+                <option value="Explorer">2023 Ford Explorer</option>
+                <option value="3 Series">2022 BMW 3 Series</option>
+            </select>
+
+            <h2 id="car-title2"></h2>
+            <h3 id="car-mpg2"></h3>
+            <h3 id="car-engine2"></h3>
+            <h3 id="car-options2"></h3>
+            <p id="car-listing2"></p>            
+
+        </div>
+
+        <hr>
+
+        <div id="animal">
+
+            <img src="images/animals/zebra.jpg" id="animal-pic">
+
+            <div id="animal-info">
+
+                <select id="animal-menu">
+                    <option value="choose">Choose an animal..</option>
+                    <option value="American bison">American bison</option>
+                    <option value="anaconda">anaconda</option>
+                    <option value="Andean bear">Andean bear</option>
+                    <option value="Andean condor">Andean condor</option>
+                    <option value="armadillo">armadillo</option>
+                    <option value="capybara">capybara</option>
+                    <option value="cheetah">cheetah</option>
+                    <option value="elephant">elephant</option>
+                    <option value="giraffe">giraffe</option>
+                    <option value="kangaroo">kangaroo</option>
+                    <option value="King cobra">King cobra</option>
+                    <option value="Kodiak bear">Kodiak bear</option>
+                    <option value="Komodo dragon">Komodo dragon</option>
+                    <option value="lion">lion</option>
+                    <option value="moose">moose</option>
+                    <option value="ostrich">ostrich</option>
+                    <option value="panda">panda</option>
+                    <option value="penguin">penguin</option>
+                    <option value="porcupine">porcupine</option>
+                    <option value="quetzal">quetzal</option>
+                    <option value="raccoon">raccoon</option>
+                    <option value="rattlesnake">rattlesnake</option>
+                    <option value="rhinoceros">rhinoceros</option>
+                    <option value="Siberian tiger">Siberian tiger</option>
+                    <option value="sloth">sloth</option>
+                    <option value="tiger">tiger</option>
+                    <option value="turkey vulture">turkey vulture</option>
+                    <option value="zebra">zebra</option>
+                </select>
+
+                <p>
+                    <span id="animal-name">zebra</span><br> 
+                    <span id="animal-class">class: mammal</span><br>
+                    <span id="animal-continent">continent: Africa</span><br>
+                    <span id="animal-diet">diet: herbivore</span>
+                </p>
+
+                </div>
+                    
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="js/animals.js"></script> 
+    <script src="js/cars.js"></script> 
+
+    <script>
+        // console.log(animalsArr[0]);
+        // // make sure the carsArr array in cars.js is loaded:
+        // // get category, make and model of the last car:
+        // console.log(carsArr[carsArr.length-1].category); 
+        // console.log(carsArr[carsArr.length-1].make); 
+        // console.log(carsArr[carsArr.length-1].model); 
+    </script>
+
+    <!-- START .js -->
+    <script src="js/04.02-Objects-START.js"></script>
+
+    <!-- PROG .js -->
+    <!-- <script src="js/04.02-Objects-PROG.js"></script> -->
+
+    <!-- FINAL .js -->
+    <!-- <script src="js/04.02-Objects-FINAL.js"></script> -->
+
+</body>
+
+</html>
